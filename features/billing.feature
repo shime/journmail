@@ -5,9 +5,7 @@ Feature: Billing
   Scenario: Scheduling Next Payment
     Given I am unregistered user
     When I register with my email
-    Then I should receive a registration email
-    And the next payment should be scheduled for 30 days and should be 2$
-    And I should become a paying user
+    Then the next payment should be scheduled for 30 days and should be 2$
 
   Scenario: Payment Reminder Email
     Given I am a paying user
