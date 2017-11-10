@@ -1,7 +1,7 @@
 Feature: Emails
 
   Emails play a central role in our system, we use them as a
-  notification system and use them for registration.
+  notification system and for registration.
 
   In order to train consistency, we notify users every day in the evening that they
   should write a new entry for their day (one sentence).

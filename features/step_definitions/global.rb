@@ -11,11 +11,15 @@ Given("I have {int} entries") do |int|
 end
 
 Given("I am unregistered user") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @current_user = User.new
 end
 
 When("I register with my email") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @current_user.email = "foo@bar.com"
+  @mail_client = Mailgun::Client.new 'your-api-key'
+  @mail_client.enable_test_mode!
+
+  RegisterService.call(@current_user, @mail_client)
 end
 
 When("I go to a history page") do
@@ -75,7 +79,8 @@ Then("my longest streak should be two") do
 end
 
 Then("I should receive a registration email") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @mail = Mailgun::Client.deliveries.first
+  expect(@mail).to_not be_nil
 end
 
 Then("the next payment should be scheduled for {int} days and should be {int}$") do |int, int2|

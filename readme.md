@@ -19,6 +19,13 @@ $ bundle install
 $ rake
 ```
 
+Setting up database
+
+```shell
+$ rake db:create
+$ rake db:migrate
+```
+
 ## License
 
 MIT
