@@ -15,11 +15,9 @@ Given("I am unregistered user") do
 end
 
 When("I register with my email") do
-  @current_user.email = "foo@bar.com"
-  @mail_client = Mailgun::Client.new 'your-api-key'
-  @mail_client.enable_test_mode!
-
-  RegisterService.call(@current_user, @mail_client)
+  @current_user.email = "shime@twobucks.co"
+  Mail.defaults { delivery_method :test }
+  RegisterService.call(@current_user)
 end
 
 When("I go to a history page") do
@@ -79,8 +77,10 @@ Then("my longest streak should be two") do
 end
 
 Then("I should receive a registration email") do
-  @mail = Mailgun::Client.deliveries.first
+  @mail = Mail::TestMailer.deliveries.first
   expect(@mail).to_not be_nil
+  expect(@mail.subject).to match(/Please register/)
+  expect(@mail.html_part.body).to match(/Start your 7 day free trial/)
 end
 
 Then("the next payment should be scheduled for {int} days and should be {int}$") do |int, int2|

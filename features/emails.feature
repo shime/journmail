@@ -12,7 +12,8 @@ Feature: Emails
     Then I should receive a registration email
 
   Scenario: Registration Confirmation
-    Given I have received registration email
+    Given I am a paying user
+    And I have received registration email
     When I click on "confirm subscription" button
     Then I should become a paying user
 
