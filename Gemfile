@@ -5,13 +5,16 @@ gem 'pg'
 gem 'sequel'
 gem 'postmark'
 gem 'mail'
+gem 'sinatra'
 
 group :development do
   gem 'pry'
 end
 
 group :test do
+  gem 'webrat'
   gem 'rspec'
   gem 'cucumber'
+  gem 'database_cleaner'
 end
 

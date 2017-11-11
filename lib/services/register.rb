@@ -1,8 +1,9 @@
 require 'mail'
-require 'pry'
 require 'postmark'
+require_relative '../constants'
 
 class RegisterService
+
   def self.call(*args)
     new(*args).call
   end
@@ -15,7 +16,7 @@ class RegisterService
   def call
     @client.deliver_with_template(from: 'shime@twobucks.co',
                                   to: 'shime.ferovac@gmail.com',
-                                  template_id: 3871741,
+                                  template_id: Constants::REGISTER_TEMPLATE_ID,
                                   template_model: {
                                     company_name: 'Vedran & Hrvoje',
                                     action_url: link_to_registration(@user),

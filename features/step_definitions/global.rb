@@ -11,7 +11,11 @@ Given("I have {int} entries") do |int|
 end
 
 Given("I am unregistered user") do
-  @current_user = User.new
+  @current_user = User.create(email: "shime.ferovac@gmail.com")
+end
+
+Given("I go to registration URL") do
+  visit("/register/#{@current_user.email}")
 end
 
 When("I register with my email") do
@@ -86,7 +90,7 @@ Then("the next payment should be scheduled for {int} days and should be {int}$")
 end
 
 Then("I should become a paying user") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(@current_user.reload.paying?).to be(true)
 end
 
 Then("I should receive an email to pay") do

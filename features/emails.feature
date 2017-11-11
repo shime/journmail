@@ -12,9 +12,8 @@ Feature: Emails
     Then I should receive a registration email
 
   Scenario: Registration Confirmation
-    Given I am a paying user
-    And I have received registration email
-    When I click on "confirm subscription" button
+    Given I am unregistered user
+    And I go to registration URL
     Then I should become a paying user
 
   Scenario: Notification Emails
