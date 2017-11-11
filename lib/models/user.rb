@@ -1,6 +1,8 @@
 require_relative './../init'
 
 class User < Sequel::Model
+  one_to_many :log_entries
+
   def paying?
     status == 'paying'
   end

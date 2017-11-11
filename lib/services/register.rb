@@ -1,4 +1,3 @@
-require 'mail'
 require 'postmark'
 require_relative '../constants'
 require_relative '../init'
@@ -15,8 +14,9 @@ class RegisterService
   end
 
   def call
-    @client.deliver_with_template(from: 'shime@twobucks.co',
+    @client.deliver_with_template(from: "shime@twobucks.co",
                                   to: 'shime.ferovac@gmail.com',
+                                  reply_to: "user+#{@user.token}@inbound.twobucks.co",
                                   template_id: Constants::REGISTER_TEMPLATE_ID,
                                   template_model: {
                                     company_name: 'Vedran & Hrvoje',
@@ -30,6 +30,6 @@ class RegisterService
   private
 
     def link_to_registration(user)
-      "#{Settings.urls.registration}/#{@user.email}"
+      "#{Settings.urls.registration}/#{@user.token}"
     end
 end

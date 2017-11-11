@@ -23,6 +23,13 @@ Feature: Emails
 
   Scenario: Email Replies
     Given I am a paying user
-    And I've received an email notification
     When I respond to email notification
     Then a new log entry should be created
+    And last log entry should belong to a current user
+
+  Scenario: Inbound Email Parsing
+    Given I am a paying user
+    When I post an email to inbound endpoint
+    Then server response should be success
+    Then a new log entry should be created
+    And it should only contain the reply text

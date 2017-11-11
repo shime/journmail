@@ -1,5 +1,5 @@
 Given("I am a paying user") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @current_user = CreateUserService.call(email: 'shime@twobucks.co', status: 'paying')
 end
 
 Given("I've received an email notification") do
@@ -11,18 +11,24 @@ Given("I have {int} entries") do |int|
 end
 
 Given("I am unregistered user") do
-  @current_user = User.create(email: "shime.ferovac@gmail.com")
+  @current_user = CreateUserService.call(email: 'shime@twobucks.co')
 end
 
 Given("I go to registration URL") do
-  visit("/register/#{@current_user.email}")
+  visit("/register/#{@current_user.token}")
 end
 
 When("I register with my email") do
-  @current_user.email = "shime@twobucks.co"
   @mail_client = double
   allow(@mail_client).to receive(:deliver_with_template)
   RegisterService.call(@current_user, @mail_client)
+end
+
+When("I post an email to inbound endpoint") do
+  post "/inbound", JSON.generate({
+    text_body: File.read(File.join(File.dirname(__FILE__),
+                                   "./email_response.txt")),
+    mailbox_hash: @current_user.token}), { 'CONTENT_TYPE' => 'application/json' }
 end
 
 When("I go to a history page") do
@@ -46,11 +52,15 @@ When("time is {int}:{int} in my timezone") do |int, int2|
 end
 
 When("I respond to email notification") do
-  pending # Write code here that turns the phrase above into concrete actions
+  EmailResponseService.call(@current_user.token, "Response text")
 end
 
 When("I add a new log entry") do
   pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then("server response should be success") do
+  expect(last_response.status).to be(200)
 end
 
 Then("I should receive an email notification") do
@@ -58,7 +68,11 @@ Then("I should receive an email notification") do
 end
 
 Then("a new log entry should be created") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(LogEntry.count).to be(1)
+end
+
+Then("last log entry should belong to a current user") do
+  expect(LogEntry.last.user.id).to eq(@current_user.id)
 end
 
 Then("I should see a notification that I should pay") do
@@ -95,4 +109,8 @@ end
 
 Then("I should receive an email to pay") do
   pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then("it should only contain the reply text") do
+  expect(LogEntry.last.body).to eq("Das ist die Zeitung!")
 end
