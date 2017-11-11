@@ -2,39 +2,27 @@ require 'mail'
 require 'pry'
 require 'postmark'
 
-Mail.defaults do
-  delivery_method Mail::Postmark, api_token: ENV['POSTMARK_API_KEY']
-end
-
 class RegisterService
-  def self.call(user)
-    new(user).call
+  def self.call(*args)
+    new(*args).call
   end
 
-  def initialize(user)
+  def initialize(user, client = Postmark::ApiClient.new(ENV["POSTMARK_API_KEY"]))
     @user = user
+    @client = client
   end
 
   def call
-    user = @user
-    registration_link = link_to_registration(user)
-
-    Mail.deliver do
-      from     'shime@twobucks.co'
-      to       user.email
-      subject  'Please register your account'
-      text_part do
-        body "Thanks for sigining up for ONE SENTENCE PER DAY. Please confirm your subscription on the following link: #{registration_link}."
-      end
-
-      html_part do
-        content_type 'text/html; charset=UTF-8'
-        body     %Q(<p> Thanks for signing up for ONE SENTENCE PER DAY. </p>
-                  <p>
-                    <a href=#{registration_link}> Start your 7 day free trial </a>
-                  </p>)
-      end
-    end
+    @client.deliver_with_template(from: 'shime@twobucks.co',
+                                  to: 'shime.ferovac@gmail.com',
+                                  template_id: 3871741,
+                                  template_model: {
+                                    company_name: 'Vedran & Hrvoje',
+                                    action_url: link_to_registration(@user),
+                                    help_url: "https://github.com/shime/one-sentence-per-day",
+                                    support_email: "hrvoje@twobucks.co",
+                                    product_name: "One Sentence Per Day"
+                                  })
   end
 
   private

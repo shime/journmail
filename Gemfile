@@ -11,7 +11,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-expectations'
+  gem 'rspec'
   gem 'cucumber'
 end
 

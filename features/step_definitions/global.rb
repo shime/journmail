@@ -16,8 +16,9 @@ end
 
 When("I register with my email") do
   @current_user.email = "shime@twobucks.co"
-  Mail.defaults { delivery_method :test }
-  RegisterService.call(@current_user)
+  @mail_client = double
+  allow(@mail_client).to receive(:deliver_with_template)
+  RegisterService.call(@current_user, @mail_client)
 end
 
 When("I go to a history page") do
@@ -77,10 +78,7 @@ Then("my longest streak should be two") do
 end
 
 Then("I should receive a registration email") do
-  @mail = Mail::TestMailer.deliveries.first
-  expect(@mail).to_not be_nil
-  expect(@mail.subject).to match(/Please register/)
-  expect(@mail.html_part.body).to match(/Start your 7 day free trial/)
+  expect(@mail_client).to have_received(:deliver_with_template)
 end
 
 Then("the next payment should be scheduled for {int} days and should be {int}$") do |int, int2|
