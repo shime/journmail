@@ -9,6 +9,7 @@ require 'rack/test'
 require 'rspec/expectations'
 require 'webrat'
 
+require_relative './../../lib/init'
 require_relative './../../api/index'
 require_relative './database_cleaner'
 

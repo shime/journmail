@@ -6,6 +6,7 @@ gem 'sequel'
 gem 'postmark'
 gem 'mail'
 gem 'sinatra'
+gem 'config'
 
 group :development do
   gem 'pry'

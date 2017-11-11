@@ -1,6 +1,7 @@
 require 'mail'
 require 'postmark'
 require_relative '../constants'
+require_relative '../init'
 
 class RegisterService
 
@@ -29,7 +30,6 @@ class RegisterService
   private
 
     def link_to_registration(user)
-      # TODO
-      "https://google.com"
+      "#{Settings.urls.registration}/#{@user.email}"
     end
 end

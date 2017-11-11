@@ -1,5 +1,4 @@
-require 'sequel'
-DB = Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost:5432/one_sentence_per_day')
+require_relative './../init'
 
 class User < Sequel::Model
   def paying?

@@ -1,0 +1,3 @@
+urls:
+  db: 'postgres://localhost:5432/one_sentence_per_day'
+  registration: "http://localhost:4567/register"

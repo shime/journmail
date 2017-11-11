@@ -1,0 +1,2 @@
+urls:
+  db: 'postgres://localhost:5432/one_sentence_per_day_test'

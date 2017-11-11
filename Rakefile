@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
+require 'config'
 
 Cucumber::Rake::Task.new(:features) do |t|
   t.cucumber_opts = "features --format pretty"
@@ -9,17 +10,19 @@ end
 namespace :db do
   require "sequel"
   Sequel.extension :migration
+  Config.load_and_set_settings(Config.setting_files("./config", ENV['RACK_ENV']))
 
   begin
-    DB = Sequel.connect(ENV['DATABASE_URL'] || "postgres://localhost:5432/one_sentence_per_day")
+    DB = Sequel.connect(Settings.urls.db)
   rescue
     puts "Can't connect to 'one_sentence_per_day' - create it first?"
   end
 
   desc "Creates database"
   task :create do
+    Config.load_and_set_settings(Config.setting_files("./config", ENV['RACK_ENV']))
     ROOT_DB = Sequel.connect("postgres://localhost:5432/postgres")
-    ROOT_DB.execute "CREATE DATABASE one_sentence_per_day"
+    ROOT_DB.execute "CREATE DATABASE #{Settings.urls.db.split('/')[-1]}"
   end
 
   desc "Prints current schema version"
