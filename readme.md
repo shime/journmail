@@ -12,6 +12,12 @@ Teach yourself consistency by keeping a journal and writing one sentence per day
 
 ## Development
 
+Spin up a development server
+
+```shell
+$ rackup
+```
+
 Running tests
 
 ```shell
