@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require_relative "../lib/services/email_notifier"
+puts "[cron] #{Time.now} - Running EmailNotifierService"
+EmailNotifierService.call
+puts "[cron] #{Time.now} - Stopping EmailNotifierService"

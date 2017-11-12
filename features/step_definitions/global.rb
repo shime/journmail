@@ -47,8 +47,9 @@ When("I don't log anything on a third day") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-When("time is {int}:{int} in my timezone") do |int, int2|
-  pending # Write code here that turns the phrase above into concrete actions
+When("time is {int}:{int} in my timezone") do |hours, minutes|
+  time = Time.local(2017, 12, 1, hours, minutes, 0)
+  Timecop.travel(time)
 end
 
 When("I respond to email notification") do
@@ -59,12 +60,18 @@ When("I add a new log entry") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
+When("email notification is sent") do
+  @mail_client = double
+  allow(@mail_client).to receive(:deliver_with_template)
+  EmailNotifierService.call(@mail_client)
+end
+
 Then("server response should be success") do
   expect(last_response.status).to be(200)
 end
 
 Then("I should receive an email notification") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(@mail_client).to have_received(:deliver_with_template)
 end
 
 Then("a new log entry should be created") do

@@ -8,6 +8,7 @@ gem 'mail'
 gem 'sinatra'
 gem 'config'
 gem 'email_reply_parser', github: "shime/email_reply_parser"
+gem 'whenever', require: false
 
 group :development do
   gem 'pry'
@@ -18,5 +19,6 @@ group :test do
   gem 'rspec'
   gem 'cucumber'
   gem 'database_cleaner'
+  gem 'timecop'
 end
 

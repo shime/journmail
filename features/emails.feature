@@ -19,6 +19,7 @@ Feature: Emails
   Scenario: Notification Emails
     Given I am a paying user
     When time is 20:00 in my timezone
+    And email notification is sent
     Then I should receive an email notification
 
   Scenario: Email Replies

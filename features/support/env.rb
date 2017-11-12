@@ -8,6 +8,7 @@ require 'rubygems'
 require 'rack/test'
 require 'rspec/expectations'
 require 'webrat'
+require 'timecop'
 
 require_relative './../../lib/init'
 require_relative './../../api/index'

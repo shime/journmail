@@ -1,5 +1,5 @@
 require 'sinatra'
-require_relative './../lib/models/user'
+require_relative './../lib/services/email_response'
 require 'pry'
 require 'postmark'
 require 'email_reply_parser'

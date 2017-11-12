@@ -1,4 +1,6 @@
 require_relative '../init'
+require_relative '../models/user'
+require_relative '../models/log_entry'
 
 class EmailResponseService
   class UserNotFoundError < StandardError; end
