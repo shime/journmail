@@ -17,7 +17,7 @@ class RegisterService
 
   def call
     @client.deliver_with_template(from: "shime@twobucks.co",
-                                  to: 'shime.ferovac@gmail.com',
+                                  to: @user.email,
                                   reply_to: "user+#{@user.token}@inbound.twobucks.co",
                                   template_id: Constants::REGISTER_TEMPLATE_ID,
                                   template_model: {
