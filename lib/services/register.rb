@@ -8,7 +8,7 @@ class RegisterService
     new(*args).call
   end
 
-  def initialize(user, client = Postmark::ApiClient.new(ENV["POSTMARK_API_KEY"]))
+  def initialize(user, client = Postmark::ApiClient.new(Settings.postmark.api_key))
     @user = user
     @client = client
   end

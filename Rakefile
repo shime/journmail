@@ -3,6 +3,8 @@ require 'cucumber'
 require 'cucumber/rake/task'
 require 'config'
 
+ENV["RACK_ENV"] ||= "development"
+
 Cucumber::Rake::Task.new(:features) do |t|
   t.cucumber_opts = "features --format pretty"
 end
@@ -10,7 +12,7 @@ end
 namespace :db do
   require "sequel"
   Sequel.extension :migration
-  Config.load_and_set_settings(Config.setting_files("./config", ENV['RACK_ENV']))
+  Config.load_and_set_settings(Config.setting_files("./config", ENV.fetch("RACK_ENV")))
 
   begin
     DB = Sequel.connect(Settings.urls.db)
@@ -20,7 +22,7 @@ namespace :db do
 
   desc "Creates database"
   task :create do
-    Config.load_and_set_settings(Config.setting_files("./config", ENV['RACK_ENV']))
+    Config.load_and_set_settings(Config.setting_files("./config", ENV.fetch("RACK_ENV")))
     ROOT_DB = Sequel.connect("postgres://localhost:5432/postgres")
     ROOT_DB.execute "CREATE DATABASE #{Settings.urls.db.split('/')[-1]}"
   end
