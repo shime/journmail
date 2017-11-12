@@ -8,8 +8,9 @@ Feature: Emails
 
   Scenario: Registration
     Given I am unregistered user
-    When I register with my email
+    When I register with "shime@twobucks.co"
     Then I should receive a registration email
+    And the new user should be created
 
   Scenario: Registration Confirmation
     Given I am unregistered user

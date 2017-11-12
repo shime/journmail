@@ -1,16 +1,18 @@
 require 'postmark'
 require_relative '../constants'
 require_relative '../init'
+require_relative './create_user'
 
 class RegisterService
-
   def self.call(*args)
     new(*args).call
   end
 
-  def initialize(user, client = Postmark::ApiClient.new(Settings.postmark.api_key))
-    @user = user
+  def initialize(email, client = Postmark::ApiClient.new(Settings.postmark.api_key))
+    @email = email
     @client = client
+
+    @user = CreateUserService.call({email: @email})
   end
 
   def call

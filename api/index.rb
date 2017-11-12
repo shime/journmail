@@ -1,8 +1,22 @@
-require 'sinatra'
-require_relative './../lib/services/email_response'
-require 'pry'
-require 'postmark'
-require 'email_reply_parser'
+require "sinatra"
+require "json"
+require "pry"
+require "postmark"
+require "email_reply_parser"
+
+require_relative "./../lib/services/email_response"
+require_relative "./../lib/services/register"
+
+get "/" do
+  erb :index
+end
+
+post "/register" do
+  email = JSON.parse(request.body.read)["email"]
+  RegisterService.call(email)
+
+  { success: true }.to_json
+end
 
 get '/register/:token' do
   @current_user = User.find(token: params[:token])

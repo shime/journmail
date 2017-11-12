@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <title>One Sentence Per Day</title>
+    <style type='text/css'>
+      html, body {
+        font-family: Roboto, sans-serif;
+        height: 100%;
+        margin: 0;
+      }
+      .wrapper {
+        min-height: 100%;
+
+        /* Equal to height of footer */
+        /* But also accounting for potential margin-bottom of last child */
+        margin: auto;
+        margin-bottom: -50px;
+        text-align: center;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      h1 { 
+        padding-top: 10rem;
+      }
+
+      form {
+        margin-top: 5rem;
+      }
+
+      footer, .push {
+        text-align: center;
+        font-weight: 100;
+        color: gray;
+        height: 50px;
+      }
+
+      .btn {
+        background: #11998e;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color: white;
+        border: 1px white solid;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #email-input {
+        border: 0;
+        border-bottom: 1px solid;
+        margin-bottom: 10px;
+      }
+
+      input {
+        outline: 0;
+        width: 250px;
+      }
+
+      @media all and (max-width: 480px) { 
+        h1 {
+          padding-top: 5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class='wrapper'>
+      <h1>One Sentence Per Day</h1>
+      <i> Teach yourself consistency by writing one sentence per day.</i>
+      <form id="email-form" action="/register">
+        <input id="email-input" type="text" name="email">
+        <input type="submit" value="Send an invitation email" class="btn">
+      </form>
+
+      <p class="something-went-wrong" style="display: none">Something went wrong, please try again.</p>
+      <p class="success" style="display: none">Thank you! Email is on its way, please check your inbox.</p>
+      <p class="invalid-email" style="display: none">Nice try, now try providing a valid email.</p>
+
+      <div class='push'></div>
+    </div>
+
+    <footer>
+      Hrvoje & Vedran © 2017 
+    </footer>
+
+  </body>
+
+  <script type='text/javascript'>
+    var somethingWentWrong = document.querySelector(".something-went-wrong")
+    var invalidEmail = document.querySelector(".invalid-email")
+    var success = document.querySelector(".success")
+
+    function submit(email) {
+
+      var xhr = new XMLHttpRequest()
+      var url = "/register"
+      xhr.open("POST", url, true)
+      xhr.setRequestHeader("Content-type", "application/json")
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText)
+            success.style.display = "block"
+          } else {
+            somethingWentWrong.style.display = "block"
+          }
+        }
+      };
+      var data = JSON.stringify({"email": email})
+      xhr.send(data)
+    }
+    document.querySelector("#email-form").addEventListener("submit", function(e){
+      e.preventDefault()
+      success.style.display = "none"
+      somethingWentWrong.style.display = "none"
+      invalidEmail.style.display = "none"
+
+      var email = document.querySelector("#email-input").value
+
+      if (email.match(/.*@.*\..*/)){
+        submit(email)
+      } else {
+        invalidEmail.style.display = 'block'
+      }
+    });
+  </script>
+</html>

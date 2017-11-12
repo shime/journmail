@@ -18,10 +18,10 @@ Given("I go to registration URL") do
   visit("/register/#{@current_user.token}")
 end
 
-When("I register with my email") do
+When("I register with {string}") do |email|
   @mail_client = double
   allow(@mail_client).to receive(:deliver_with_template)
-  RegisterService.call(@current_user, @mail_client)
+  RegisterService.call(email, @mail_client)
 end
 
 When("I post an email to inbound endpoint") do
@@ -120,4 +120,8 @@ end
 
 Then("it should only contain the reply text") do
   expect(LogEntry.last.body).to eq("Das ist die Zeitung!")
+end
+
+Then("the new user should be created") do
+  expect(User.count).to be(2)
 end
