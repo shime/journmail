@@ -23,6 +23,6 @@ env :MAILTO, ""
 set :output, File.join(File.dirname(__FILE__), "../logs/cron.log")
 set :environment_variable, "RACK_ENV"
 
-every 1.day , at: "19:00" do
+every 1.day , at: "17:00" do
   script "email_notifier"
 end
