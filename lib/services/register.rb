@@ -12,7 +12,7 @@ class RegisterService
     @email = email
     @client = client
 
-    @user = CreateUserService.call({email: @email})
+    @user = CreateUserService.call({ email: @email })
   end
 
   def call

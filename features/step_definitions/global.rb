@@ -41,7 +41,7 @@ When("I try to register with {string}") do |email|
 end
 
 When("I try to register with {string} via API") do |email|
-  post '/register', {email: email}.to_json
+  post '/register', { email: email }.to_json
 end
 
 When("I post an email to inbound endpoint") do
