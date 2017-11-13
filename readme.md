@@ -1,6 +1,7 @@
 # One Sentence Per Day
 
 [![Build Status](https://travis-ci.org/shime/one-sentence-per-day.svg)](https://travis-ci.org/shime/one-sentence-per-day)
+[![To Do](https://badge.waffle.io/shime/one-sentence-per-day.svg?columns=To%20Do)](https://waffle.io/shime/one-sentence-per-day)
 
 Teach yourself consistency by keeping a journal and writing one sentence per day in it.
 
