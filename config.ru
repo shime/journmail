@@ -1,2 +1,2 @@
-require_relative "./api/index"
+require_relative "./server/index"
 run Sinatra::Application

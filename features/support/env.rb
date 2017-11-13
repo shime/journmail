@@ -11,7 +11,7 @@ require 'webrat'
 require 'timecop'
 
 require_relative './../../lib/init'
-require_relative './../../api/index'
+require_relative './../../server/index'
 require_relative './database_cleaner'
 
 Webrat.configure do |config|
