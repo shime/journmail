@@ -14,7 +14,7 @@ class EmailNotifierService
   end
 
   def call
-    User.all.each do |user|
+    User.where(status: 'paying').each do |user|
       @client.deliver_with_template(from: "shime@twobucks.co",
                                     to: user.email,
                                     reply_to: "user+#{user.token}@inbound.twobucks.co",
