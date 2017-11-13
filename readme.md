@@ -8,7 +8,6 @@ Teach yourself consistency by keeping a journal and writing one sentence per day
 
 * Ruby
 * PostgreSQL
-* Docker
 
 ## Development
 
@@ -18,14 +17,14 @@ Spin up a development server
 $ rackup
 ```
 
-Running tests
+Run tests
 
 ```shell
 $ bundle install
 $ rake
 ```
 
-Setting up database
+Set up database
 
 ```shell
 $ rake db:create
