@@ -6,13 +6,16 @@ class CreateUserService
     new(*args).call
   end
 
-  def initialize(attributes)
+  def initialize(attributes, save = false)
     @attributes = attributes
 
     @attributes[:token] ||= SecureRandom.uuid
+    @save = save
   end
 
   def call
-    User.create(@attributes)
+    User.new(@attributes).tap do |user|
+      user.save if @save
+    end
   end
 end

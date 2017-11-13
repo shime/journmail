@@ -3,8 +3,8 @@ Feature: Billing
   We want to have billing in order to have a sustainable business.
 
   Scenario: Scheduling Next Payment
-    Given I am unregistered user
-    When I register with my email
+    Given I am unregistered user 
+    When I go to registration confirmation URL
     Then the next payment should be scheduled for 30 days and should be 2$
 
   Scenario: Payment Reminder Email

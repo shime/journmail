@@ -1,5 +1,16 @@
+Given("there are some issues with mail delivery service") do
+  @mail_client = double
+  allow(@mail_client).to receive(:deliver_with_template).and_raise("boom")
+end
+
+Given("the mail delivery service works") do
+  @mail_client = double
+  allow(@mail_client).to receive(:deliver_with_template)
+  allow(Postmark::ApiClient).to receive(:new).and_return(@mail_client)
+end
+
 Given("I am a paying user") do
-  @current_user = CreateUserService.call(email: 'shime@twobucks.co', status: 'paying')
+  @current_user = CreateUserService.call({ email: 'shime@twobucks.co', status: 'paying' }, true)
 end
 
 Given("I've received an email notification") do
@@ -11,7 +22,7 @@ Given("I have {int} entries") do |int|
 end
 
 Given("I am unregistered user") do
-  @current_user = CreateUserService.call(email: 'shime@twobucks.co')
+  @current_user = CreateUserService.call({ email: 'shime@twobucks.co' }, true)
 end
 
 Given("I go to registration confirmation URL") do
@@ -19,13 +30,14 @@ Given("I go to registration confirmation URL") do
 end
 
 Given("a user with email {string} exists") do |email|
-  CreateUserService.call(email: email)
+  CreateUserService.call({ email: email }, true)
 end
 
 When("I try to register with {string}") do |email|
-  @mail_client = double
-  allow(@mail_client).to receive(:deliver_with_template)
-  RegisterService.call(email, @mail_client)
+  begin
+    RegisterService.call(email)
+  rescue 
+  end
 end
 
 When("I try to register with {string} via API") do |email|
@@ -136,4 +148,8 @@ end
 
 Then("server response status should be {int}") do |status|
   expect(last_response.status).to be(status)
+end
+
+Then("there should be {int} registered user(s)") do |count|
+  expect(User.count).to be(count)
 end

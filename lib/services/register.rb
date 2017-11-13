@@ -27,6 +27,8 @@ class RegisterService
                                     support_email: "hrvoje@twobucks.co",
                                     product_name: "One Sentence Per Day"
                                   })
+
+    @user.save
   end
 
   private
