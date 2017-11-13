@@ -14,14 +14,22 @@ Given("I am unregistered user") do
   @current_user = CreateUserService.call(email: 'shime@twobucks.co')
 end
 
-Given("I go to registration URL") do
+Given("I go to registration confirmation URL") do
   visit("/register/#{@current_user.token}")
 end
 
-When("I register with {string}") do |email|
+Given("a user with email {string} exists") do |email|
+  CreateUserService.call(email: email)
+end
+
+When("I try to register with {string}") do |email|
   @mail_client = double
   allow(@mail_client).to receive(:deliver_with_template)
   RegisterService.call(email, @mail_client)
+end
+
+When("I try to register with {string} via API") do |email|
+  post '/register', {email: email}.to_json
 end
 
 When("I post an email to inbound endpoint") do
@@ -123,5 +131,9 @@ Then("it should only contain the reply text") do
 end
 
 Then("the new user should be created") do
-  expect(User.count).to be(2)
+  expect(User.count).to be(1)
+end
+
+Then("server response status should be {int}") do |status|
+  expect(last_response.status).to be(status)
 end

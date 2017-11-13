@@ -13,7 +13,17 @@ end
 
 post "/register" do
   email = JSON.parse(request.body.read)["email"]
-  RegisterService.call(email)
+
+  begin
+    RegisterService.call(email)
+  rescue Sequel::UniqueConstraintViolation => ex
+    if ex.message =~ /email.*already exists/
+      status 409
+      return { error: "Email already taken, try another one." }.to_json
+    end
+
+    raise ex
+  end
 
   { success: true }.to_json
 end

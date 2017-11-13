@@ -6,17 +6,6 @@ Feature: Emails
   In order to train consistency, we notify users every day in the evening that they
   should write a new entry for their day (one sentence).
 
-  Scenario: Registration
-    Given I am unregistered user
-    When I register with "shime@twobucks.co"
-    Then I should receive a registration email
-    And the new user should be created
-
-  Scenario: Registration Confirmation
-    Given I am unregistered user
-    And I go to registration URL
-    Then I should become a paying user
-
   Scenario: Notification Emails
     Given I am a paying user
     When time is 20:00 in my timezone
