@@ -15,16 +15,18 @@ class EmailNotifierService
 
   def call
     User.where(status: 'paying').each do |user|
-      @client.deliver_with_template(from: "shime@twobucks.co",
-                                    to: user.email,
-                                    reply_to: "user+#{user.token}@inbound.twobucks.co",
-                                    template_id: Constants::NOTIFICATION_TEMPLATE_ID,
-                                    template_model: {
-                                      company_name: 'Vedran & Hrvoje',
-                                      help_url: "https://github.com/shime/one-sentence-per-day",
-                                      support_email: "hrvoje@twobucks.co",
-                                      product_name: "One Sentence Per Day"
-                                    })
+      if user.time_to_send_notification?
+        @client.deliver_with_template(from: "shime@twobucks.co",
+                                      to: user.email,
+                                      reply_to: "user+#{user.token}@inbound.twobucks.co",
+                                      template_id: Constants::NOTIFICATION_TEMPLATE_ID,
+                                      template_model: {
+                                        company_name: 'Vedran & Hrvoje',
+                                        help_url: "https://github.com/shime/one-sentence-per-day",
+                                        support_email: "hrvoje@twobucks.co",
+                                        product_name: "One Sentence Per Day"
+                                      })
+      end
     end
   end
 end

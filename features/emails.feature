@@ -7,8 +7,8 @@ Feature: Emails
   should write a new entry for their day (one sentence).
 
   Scenario: Notification Emails
-    Given I am a paying user
-    When time is 20:00 in my timezone
+    Given I am a paying user in "Europe/London" timezone
+    When time is 20:00 in "Europe/London" timezone
     And email notification is sent
     Then I should receive an email notification
 

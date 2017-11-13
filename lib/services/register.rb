@@ -8,11 +8,11 @@ class RegisterService
     new(*args).call
   end
 
-  def initialize(email, client = Postmark::ApiClient.new(Settings.postmark.api_key))
+  def initialize(email, timezone = "Europe/London", client = Postmark::ApiClient.new(Settings.postmark.api_key))
     @email = email
     @client = client
 
-    @user = CreateUserService.call({ email: @email })
+    @user = CreateUserService.call({ email: @email, timezone: timezone })
   end
 
   def call

@@ -13,6 +13,10 @@ Given("I am a paying user") do
   @current_user = CreateUserService.call({ email: 'shime@twobucks.co', status: 'paying' }, true)
 end
 
+Given("I am a paying user in {string} timezone") do |timezone|
+  @current_user = CreateUserService.call({ email: 'shime@twobucks.co', status: 'paying', timezone: timezone }, true)
+end
+
 Given("I've received an email notification") do
   pending # Write code here that turns the phrase above into concrete actions
 end
@@ -67,8 +71,9 @@ When("I don't log anything on a third day") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-When("time is {int}:{int} in my timezone") do |hours, minutes|
-  time = Time.local(2017, 12, 1, hours, minutes, 0)
+When("time is {int}:{int} in {string} timezone") do |hours, minutes, timezone|
+  Time.zone = timezone
+  time = Time.zone.local(2017, 12, 1, hours, minutes, 0)
   Timecop.travel(time)
 end
 

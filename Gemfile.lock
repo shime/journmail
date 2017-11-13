@@ -131,6 +131,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   config
   cucumber
   database_cleaner

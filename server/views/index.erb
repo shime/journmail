@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.6/jstz.js"></script>
 
     <title>One Sentence Per Day</title>
     <style type='text/css'>
@@ -98,6 +99,9 @@
     var success = document.querySelector(".success")
     var errorMessage = document.querySelector(".error-message")
 
+    var tz = jstz.determine()
+    var timezone = tz.name();
+
     function submit(email) {
 
       var xhr = new XMLHttpRequest()
@@ -117,7 +121,7 @@
           }
         }
       };
-      var data = JSON.stringify({"email": email})
+      var data = JSON.stringify({ email: email, timezone: timezone })
       xhr.send(data)
     }
     document.querySelector("#email-form").addEventListener("submit", function(e){
