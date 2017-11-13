@@ -67,10 +67,6 @@ When("I log entries for two consecutive days") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-When("I don't log anything on a third day") do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
 When("time is {int}:{int} in {string} timezone") do |hours, minutes, timezone|
   Time.zone = timezone
   time = Time.zone.local(2017, 12, 1, hours, minutes, 0)
@@ -82,13 +78,23 @@ When("I respond to email notification") do
 end
 
 When("I add a new log entry") do
-  pending # Write code here that turns the phrase above into concrete actions
+  LogEntry.create(user_id: @current_user.id, body: "hi")
 end
 
 When("email notification is sent") do
   @mail_client = double
   allow(@mail_client).to receive(:deliver_with_template)
   EmailNotifierService.call(@mail_client)
+end
+
+When("I log entries for {int} consecutive days") do |int|
+  (1..int).each do |number|
+    LogEntry.create(user_id: @current_user.id, body: "hi", created_at: number.days.from_now)
+  end
+end
+
+When("I don't log anything on a third day") do 
+  Timecop.travel((3 + 1).days.from_now)
 end
 
 Then("server response should be success") do
@@ -115,15 +121,11 @@ Then("I should see {int} entries") do |int|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Then("my daily streak should increment by one") do
-  pending # Write code here that turns the phrase above into concrete actions
+Then("my daily streak should be {int}") do |number|
+  expect(@current_user.streak).to be(number)
 end
 
-Then("my daily streak should be zero") do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then("my longest streak should be two") do
+Then("my longest streak should be {int}") do |number|
   pending # Write code here that turns the phrase above into concrete actions
 end
 

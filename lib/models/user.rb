@@ -11,6 +11,10 @@ class User < Sequel::Model
   def time_to_send_notification?
     DateTime.now.in_time_zone(timezone).hour == 20
   end
+
+  def streak
+    log_entries.count
+  end
 end
 
 User.plugin :timestamps, create: :created_at, update: :updated_at, update_on_create: true
