@@ -20,6 +20,7 @@
 # Learn more: http://github.com/javan/whenever
 #
 env :MAILTO, ""
+env :PATH, ENV['PATH']
 set :output, File.join(File.dirname(__FILE__), "../logs/cron.log")
 set :environment_variable, "RACK_ENV"
 
