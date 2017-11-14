@@ -63,10 +63,6 @@ When("I haven't payed for {int} days") do |int|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-When("I log entries for two consecutive days") do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
 When("time is {int}:{int} in {string} timezone") do |hours, minutes, timezone|
   Time.zone = timezone
   time = Time.zone.local(2017, 12, 1, hours, minutes, 0)
@@ -91,10 +87,19 @@ When("I log entries for {int} consecutive days") do |int|
   (1..int).each do |number|
     LogEntry.create(user_id: @current_user.id, body: "hi", created_at: number.days.from_now)
   end
+  Timecop.travel(int.days.from_now)
 end
 
 When("I don't log anything on a third day") do 
-  Timecop.travel((3 + 1).days.from_now)
+  Timecop.travel(1.day.from_now)
+end
+
+When("it's a third day") do
+  # do nothing
+end
+
+When("the day has passed") do
+  Timecop.travel(1.day.from_now)
 end
 
 Then("server response should be success") do

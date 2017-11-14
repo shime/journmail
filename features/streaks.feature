@@ -17,12 +17,18 @@ Feature: Daily Streaks
     When I log entries for 2 consecutive days
     Then my daily streak should be 2
 
+  Scenario: Streak Two While Third Day
+    Given I am a paying user
+    When I log entries for 2 consecutive days
+    And I don't log anything on a third day
+    Then my daily streak should be 2
+
   Scenario: Streak Zero
     Given I am a paying user
     When I log entries for 2 consecutive days
     And I don't log anything on a third day
+    And the day has passed
     Then my daily streak should be 0
-    And my longest streak should be 2
 
   Scenario: Streak Broken
     Given I am a paying user
