@@ -14,7 +14,7 @@ class EmailNotifierService
   end
 
   def call
-    User.where(status: 'paying').each do |user|
+    User.paying.each do |user|
       if user.time_to_send_notification?
         @client.deliver_with_template(from: "shime@twobucks.co",
                                       to: user.email,

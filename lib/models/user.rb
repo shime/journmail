@@ -12,6 +12,19 @@ class User < Sequel::Model
 
   one_to_many :log_entries
 
+  def self.paying
+    where(status: STATUSES[:paying])
+  end
+
+  def self.pending
+    where(status: STATUSES[:pending])
+  end
+
+  def make_paying!
+    self.status = STATUSES[:paying]
+    save
+  end
+
   def paying?
     status == STATUSES[:paying]
   end

@@ -10,11 +10,11 @@ Given("the mail delivery service works") do
 end
 
 Given("I am a paying user") do
-  @current_user = CreateUserService.call({ email: 'shime@twobucks.co', status: 'paying' }, true)
+  @current_user = CreateUserService.call({ email: 'shime@twobucks.co', status: User::STATUSES[:paying] }, true)
 end
 
 Given("I am a paying user in {string} timezone") do |timezone|
-  @current_user = CreateUserService.call({ email: 'shime@twobucks.co', status: 'paying', timezone: timezone }, true)
+  @current_user = CreateUserService.call({ email: 'shime@twobucks.co', status: User::STATUSES[:paying], timezone: timezone }, true)
 end
 
 Given("I've received an email notification") do

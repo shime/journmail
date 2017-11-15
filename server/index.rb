@@ -35,8 +35,7 @@ get '/register/:token' do
     return "User not found"
   end
 
-  @current_user.status = 'paying'
-  @current_user.save
+  @current_user.make_paying!
 
   "Thanks for registering"
 end
