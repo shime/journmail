@@ -21,7 +21,7 @@
 #
 env :MAILTO, ""
 env :PATH, ENV['PATH']
-env :POSTMARK_API_TOKEN, ENV["POSTMARK_API_TOKEN"]
+env :POSTMARK_API_KEY, ENV["POSTMARK_API_KEY"]
 set :output, File.join(File.dirname(__FILE__), "../logs/cron.log")
 set :environment_variable, "RACK_ENV"
 
