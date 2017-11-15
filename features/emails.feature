@@ -8,7 +8,7 @@ Feature: Emails
 
   Scenario: Notification Emails
     Given I am a paying user in "Europe/London" timezone
-    When time is 20:00 in "Europe/London" timezone
+    When time is 18:00 in "Europe/London" timezone
     And email notification is sent
     Then I should receive an email notification
 

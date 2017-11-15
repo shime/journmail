@@ -3,14 +3,21 @@ require_relative "./../init"
 require_relative "log_entry"
 
 class User < Sequel::Model
+  EMAIL_NOTIFY_AT_HOURS = 18 # notify user by email at 18:00 in their timezone
+
+  STATUSES = {
+    paying: 'paying',
+    pending: 'pending'
+  }
+
   one_to_many :log_entries
 
   def paying?
-    status == 'paying'
+    status == STATUSES[:paying]
   end
 
   def time_to_send_notification?
-    DateTime.now.in_time_zone(timezone).hour == 20
+    DateTime.now.in_time_zone(timezone).hour == EMAIL_NOTIFY_AT_HOURS
   end
 
   def streak
