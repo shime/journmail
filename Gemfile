@@ -7,7 +7,7 @@ gem 'postmark'
 gem 'mail'
 gem 'sinatra'
 gem 'config'
-gem 'email_reply_parser', github: "shime/email_reply_parser"
+gem 'email_reply_parser', git: "https://github.com/shime/email_reply_parser.git"
 gem 'whenever', require: false
 gem 'activesupport'
 

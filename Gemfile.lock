@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/shime/email_reply_parser.git
-  revision: fc71005e2f439c699c27ba2d1bbb01ecb7c028f8
+  remote: https://github.com/shime/email_reply_parser.git
+  revision: 240052eab770c8e7550fe7bb1598084ee791bbf1
   specs:
     email_reply_parser (0.5.9)
 
