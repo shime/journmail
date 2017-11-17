@@ -1,3 +1,5 @@
+require "active_support/time"
+
 class StreakCalculator
   def self.call(*args)
     new(*args).call
@@ -8,7 +10,7 @@ class StreakCalculator
 
     @days = LogEntry.where(user_id: @user.id).order{created_at.desc}.select(:created_at).map {|row|
       row.values
-    }.map {|value| value[:created_at].to_date}
+    }.map {|value| value[:created_at].in_time_zone(@user.timezone).to_date}
   end
 
   def call
@@ -23,7 +25,7 @@ class StreakCalculator
 
     def calculate_streak(streak = 1)
       @days.each_with_index do |day, index|
-        if @days[index + 1] == day.yesterday
+        if @days[index + 1] == day.in_time_zone(@user.timezone).yesterday
           streak += 1
         else
           break
@@ -33,7 +35,7 @@ class StreakCalculator
     end
 
     def first_day_is_today_or_yesterday?
-      @days.first == Date.current ||
-        @days.first == Date.current.yesterday
+      @days.first == Date.current.in_time_zone(@user.timezone) ||
+        @days.first == Date.current.in_time_zone(@user.timezone).yesterday
     end
 end
