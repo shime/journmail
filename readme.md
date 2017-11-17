@@ -14,6 +14,12 @@ Teach yourself consistency by keeping a journal and writing one sentence per day
 
 ## Development
 
+Install dependencies
+
+```shell
+$ bundle install
+```
+
 Spin up a development server
 
 ```shell
@@ -23,15 +29,14 @@ $ rackup
 Run tests
 
 ```shell
-$ bundle install
-$ rake
+$ bundle exec rake
 ```
 
 Set up database
 
 ```shell
-$ rake db:create
-$ rake db:migrate
+$ bundle exec rake db:create
+$ bundle exec rake db:migrate
 ```
 
 ## License
