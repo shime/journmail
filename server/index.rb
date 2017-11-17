@@ -40,6 +40,18 @@ get '/register/:token' do
   "Thanks for registering"
 end
 
+get '/unsubscribe/:token' do
+  @current_user = User.find(token: params[:token])
+
+  if !@current_user
+    return "User not found"
+  end
+
+  @current_user.unsubscribe!
+
+  "Sorry to see you go"
+end
+
 post '/inbound' do
   postmark_hash = Postmark::Json.decode(request.body.read)
   ruby_hash = Postmark::Inbound.to_ruby_hash(postmark_hash)

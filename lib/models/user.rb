@@ -7,7 +7,8 @@ class User < Sequel::Model
 
   STATUSES = {
     paying: 'paying',
-    pending: 'pending'
+    pending: 'pending',
+    unsubscribed: 'unsubscribed'
   }
 
   one_to_many :log_entries
@@ -25,8 +26,17 @@ class User < Sequel::Model
     save
   end
 
+  def unsubscribe!
+    self.status = STATUSES[:unsubscribed]
+    save
+  end
+
   def paying?
     status == STATUSES[:paying]
+  end
+
+  def unsubscribed?
+    status == STATUSES[:unsubscribed]
   end
 
   def time_to_send_notification?

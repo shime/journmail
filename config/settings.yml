@@ -1,5 +1,6 @@
 urls:
   db: 'postgres://localhost:5432/one_sentence_per_day'
   registration: "http://localhost:4567/register"
+  registration: "http://localhost:4567/unsubscribe"
 postmark:
   api_key: <%= ENV["POSTMARK_API_KEY"] %>

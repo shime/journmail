@@ -22,6 +22,7 @@ class EmailNotifierService
                                       template_id: Constants::NOTIFICATION_TEMPLATE_ID,
                                       template_model: {
                                         company_name: 'Vedran & Hrvoje',
+                                        unsubscribe_url: link_to_unsubscribe(user),
                                         help_url: "https://github.com/shime/one-sentence-per-day",
                                         support_email: "hrvoje@twobucks.co",
                                         product_name: "One Sentence Per Day"
@@ -29,4 +30,10 @@ class EmailNotifierService
       end
     end
   end
+
+  private
+
+    def link_to_unsubscribe(user)
+      "#{Settings.urls.unsubscribe}/#{user.token}"
+    end
 end

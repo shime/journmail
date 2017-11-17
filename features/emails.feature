@@ -12,6 +12,12 @@ Feature: Emails
     And email notification is sent
     Then I should receive an email notification
 
+  Scenario: Not notifying unsubscribed users
+    Given 2 paying users exist
+    And 3 unsubscribed users exist
+    When email notification is sent
+    Then 2 email notifications should be received
+
   Scenario: Email Replies
     Given I am a paying user
     When I respond to email notification

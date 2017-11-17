@@ -33,8 +33,25 @@ Given("I go to registration confirmation URL") do
   visit("/register/#{@current_user.token}")
 end
 
+
+Given("{int} paying users exist") do |count|
+  count.times do 
+    CreateUserService.call({ email: "#{SecureRandom.uuid}@example.com", status: User::STATUSES[:paying] }, true)
+  end
+end
+
+Given("{int} unsubscribed users exist") do |count|
+  count.times do 
+    CreateUserService.call({ email: "#{SecureRandom.uuid}@example.com", status: User::STATUSES[:unsubscribed] }, true)
+  end
+end
+
 Given("a user with email {string} exists") do |email|
   CreateUserService.call({ email: email }, true)
+end
+
+When("I visit the unsubscribe page") do 
+  visit("/unsubscribe/#{@current_user.token}")
 end
 
 When("I try to register with {string}") do |email|
@@ -164,4 +181,12 @@ end
 
 Then("there should be {int} registered user(s)") do |count|
   expect(User.count).to be(count)
+end
+
+Then("I should be unsubscribed") do
+  expect(@current_user.reload).to be_unsubscribed
+end
+
+Then("{int} email notifications should be received") do |count|
+  expect(@mail_client).to have_received(:deliver_with_template).exactly(count).times
 end
