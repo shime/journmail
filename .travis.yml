@@ -1,6 +1,6 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=6be7b1886b5775b6447340d68a5312f72a63f65be69ef87183167ff731624a1d
+    - CC_TEST_REPORTER_ID=5540b211ab4d3037b213ba53f09165a7eb448abb6e5416275a8795df233d4805
 language: ruby
 before_script:
   - bundle exec rake db:create
