@@ -1,7 +1,9 @@
 ENV['RACK_ENV'] = 'test'
 
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  add_filter %r{^/features/}
+end
 
 Dir['./lib/**/*.rb'].each {|file| require file }
 
