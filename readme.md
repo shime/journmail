@@ -1,4 +1,4 @@
-# One Sentence Per Day
+# Journmail
 
 [![Build Status](https://travis-ci.org/shime/one-sentence-per-day.svg)](https://travis-ci.org/shime/one-sentence-per-day)
 [![GPA](https://codeclimate.com/github/shime/one-sentence-per-day/badges/gpa.svg)](https://codeclimate.com/github/shime/one-sentence-per-day)
