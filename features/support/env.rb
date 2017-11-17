@@ -1,5 +1,8 @@
 ENV['RACK_ENV'] = 'test'
 
+require 'simplecov'
+SimpleCov.start
+
 Dir['./lib/**/*.rb'].each {|file| require file }
 
 require 'cucumber/rspec/doubles'

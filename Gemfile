@@ -21,4 +21,5 @@ group :test do
   gem 'cucumber'
   gem 'database_cleaner'
   gem 'timecop'
+  gem 'simplecov', :require => false
 end
