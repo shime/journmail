@@ -44,23 +44,8 @@ class User < Sequel::Model
   end
 
   def streak
-    days = LogEntry.where(user_id: id).order{created_at.desc}.select(:created_at).map {|row|
-      row.values
-    }.map {|value| value[:created_at].to_date}
-
-    first_day_in_collection_is_today_or_yesterday = (days.first == Date.current || days.first == Date.current.yesterday)
-    streak = first_day_in_collection_is_today_or_yesterday ? 1 : 0
-    days.each_with_index do |day, index|
-      break unless first_day_in_collection_is_today_or_yesterday
-      if days[index + 1] == day.yesterday
-        streak += 1
-      else
-        break
-      end
-    end
-    streak
+    StreakCalculator.call(self)
   end
-
 end
 
 User.plugin :timestamps, create: :created_at, update: :updated_at, update_on_create: true
