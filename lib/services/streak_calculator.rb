@@ -1,4 +1,5 @@
 require "active_support/time"
+require_relative "./../models/log_entry"
 
 class StreakCalculator
   def self.call(*args)

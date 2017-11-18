@@ -1,6 +1,7 @@
 require "active_support/time"
+
 require_relative "./../init"
-require_relative "log_entry"
+require_relative "./../services/streak_calculator"
 
 class User < Sequel::Model
   EMAIL_NOTIFY_AT_HOURS = 18 # notify user by email at 18:00 in their timezone
