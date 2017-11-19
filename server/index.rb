@@ -8,7 +8,7 @@ require_relative "./../lib/services/email_response"
 require_relative "./../lib/services/register"
 
 get "/" do
-  erb :index2
+  erb :index
 end
 
 post "/register" do

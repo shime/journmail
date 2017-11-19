@@ -64,6 +64,10 @@ html, body {
   font-weight: 300;
 }
 
+.errors {
+  margin-top: 20px;
+}
+
 .button {
   padding: 15px 30px;
   background-color: #01d99f;

@@ -1,143 +1,114 @@
-<!doctype html>
-<html lang=en>
-  <head>
-    <meta charset=utf-8>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.6/jstz.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Journmail</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.6/jstz.js"></script>
 
-    <title>One Sentence Per Day</title>
-    <style type='text/css'>
-      html, body {
-        font-family: Roboto, sans-serif;
-        height: 100%;
-        margin: 0;
-      }
-      .wrapper {
-        min-height: 100%;
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main role="main" class="content">
+    <section class="header">
+      <img src="./images/logo.png" alt="Journmail logo" class="logo">
+      <div class="header__content">
+        <h1>Teach yourself consistency by keeping a journal and writing a minimum of one sentence per day in it.</h1>
+        <p>Jornmail helps you to form good habits and practice consistency
+          through our daily streaks and a history of messages.</p>
 
-        /* Equal to height of footer */
-        /* But also accounting for potential margin-bottom of last child */
-        margin: auto;
-        margin-bottom: -50px;
-        text-align: center;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
+          <div class="form-block">
+            <div class="form-block__content">
+              <form class="email-form-top">
+                <input type="text" class="input js-input" placeholder="E-mail">
+                <button class="button button-submit js-submit">
+                  <span class="button-loading"></span>
+                  <span>Start free</span>
+                </button>
+              </form>
+            </div>
+          </div>
 
-      h1 { 
-        padding-top: 10rem;
-      }
+          <section class='errors'>
+            <p class="something-went-wrong" style="display: none">Something went wrong, please try again.</p>
+            <p class="success" style="display: none">Thank you! Email is on its way, please check your inbox.</p>
+            <p class="invalid-email" style="display: none">Nice try, now try providing a valid email.</p>
+            <p class="error-message" style="display: none"></p>
+          </section>
+      </div>
+      <div class="header__patterns"></div>
+    </section>
+    <section class="section features">
+      <h1>Our sweet features</h1>
+      <div class="features__grid">
+        <div class="feature bottom-spacing">
+          <img src="./images/notif.svg" alt="Journmail notifications" class="feature__img"></img>
+          <div class="feature__content">
+            <h3>Notifications</h3>
+            <p>Lorem ipsum dolor sit amet
+              dolor amet sit ipsum lorem.</p>
+          </div>
+        </div>
+        <div class="feature bottom-spacing">
+          <img src="./images/history.svg" alt="Journmail billing" class="feature__img"></img>
+          <div class="feature__content">
+            <h3>E-mail History</h3>
+            <p>Lorem ipsum dolor sit amet
+              dolor amet sit ipsum lorem.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <img src="./images/streaks.svg" alt="Journmail billing" class="feature__img"></img>
+          <div class="feature__content">
+            <h3>Daily Streaks</h3>
+            <p>Lorem ipsum dolor sit amet
+              dolor amet sit ipsum lorem.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <img src="./images/billing.svg" alt="Journmail billing" class="feature__img"></img>
+          <div class="feature__content">
+            <h3>Billing System</h3>
+            <p>Lorem ipsum dolor sit amet
+              dolor amet sit ipsum lorem.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pricing">
+      <h1>Get all of this features for only <strong>2/month</strong>$.</h1>
+      <p>First 7 days are on us. 😎</p>
+    </section>
+    <section class="footer">
+      <div class="footer-form">
+        <h1>Ready to work on your consistency?</h1>
+        <p>If you get 7 days streak you get one month free!</p>
+        <div class="form-block">
+            <form class="email-form-bottom">
+              <div class="form-block__content">
+                <input type="text" class="input js-input" placeholder="E-mail">
+                <button class="button button-submit js-submit">Start free</button>
+              </div>
+            </form>
+          </div>
 
-      form {
-        margin-top: 5rem;
-      }
+          <section class='errors'>
+            <p class="something-went-wrong" style="display: none">Something went wrong, please try again.</p>
+            <p class="success" style="display: none">Thank you! Email is on its way, please check your inbox.</p>
+            <p class="invalid-email" style="display: none">Nice try, now try providing a valid email.</p>
+            <p class="error-message" style="display: none"></p>
+          </section>
+      </div>
+      <div class="footer__credentials">
+        <p class="footer__authors">Made by <a href="https://twitter.com/shimewastaken">@shimewastaken</a> and <a href="https://twitter.com/vblazenka">@vblazenka</a></p>
+        <p class="footer__company">© 2017 TwoBucks</p>
+      </div>
+    </section>
+  </main>
 
-      footer, .push {
-        text-align: center;
-        font-weight: 100;
-        color: gray;
-        height: 50px;
-      }
-
-      .btn {
-        background: #11998e;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        color: white;
-        border: 1px white solid;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      #email-input {
-        border: 0;
-        border-bottom: 1px solid;
-        margin-bottom: 10px;
-      }
-
-      input {
-        outline: 0;
-        width: 250px;
-      }
-
-      @media all and (max-width: 480px) { 
-        h1 {
-          padding-top: 5rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class='wrapper'>
-      <h1>One Sentence Per Day</h1>
-      <i> Teach yourself consistency by writing one sentence per day.</i>
-      <form id="email-form" action="/register">
-        <input id="email-input" type="text" name="email">
-        <input type="submit" value="Send an invitation email" class="btn">
-      </form>
-
-      <p class="something-went-wrong" style="display: none">Something went wrong, please try again.</p>
-      <p class="success" style="display: none">Thank you! Email is on its way, please check your inbox.</p>
-      <p class="invalid-email" style="display: none">Nice try, now try providing a valid email.</p>
-      <p class="error-message" style="display: none"></p>
-
-      <div class='push'></div>
-    </div>
-
-    <footer>
-      Hrvoje & Vedran © 2017 
-    </footer>
-
-  </body>
-
-  <script type='text/javascript'>
-    var somethingWentWrong = document.querySelector(".something-went-wrong")
-    var invalidEmail = document.querySelector(".invalid-email")
-    var success = document.querySelector(".success")
-    var errorMessage = document.querySelector(".error-message")
-
-    var tz = jstz.determine()
-    var timezone = tz.name();
-
-    function submit(email) {
-
-      var xhr = new XMLHttpRequest()
-      var url = "/register"
-      xhr.open("POST", url, true)
-      xhr.setRequestHeader("Content-type", "application/json")
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            var json = JSON.parse(xhr.responseText)
-            success.style.display = "block"
-          } else if (xhr.status >= 400 && xhr.status < 500) {
-            errorMessage.style.display = "block"
-            errorMessage.innerHTML = JSON.parse(xhr.responseText).error
-          } else {
-            somethingWentWrong.style.display = "block"
-          }
-        }
-      };
-      var data = JSON.stringify({ email: email, timezone: timezone })
-      xhr.send(data)
-    }
-    document.querySelector("#email-form").addEventListener("submit", function(e){
-      e.preventDefault()
-      success.style.display = "none"
-      somethingWentWrong.style.display = "none"
-      invalidEmail.style.display = "none"
-      errorMessage.style.display = "none"
-
-      var email = document.querySelector("#email-input").value
-
-      if (email.match(/.*@.*\..*/)){
-        submit(email)
-      } else {
-        invalidEmail.style.display = 'block'
-      }
-    });
-  </script>
+  <script src="./script.js"></script>
+</body>
 </html>
