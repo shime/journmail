@@ -26,7 +26,7 @@ $ bundle install
 Spin up a development server
 
 ```shell
-$ rackup
+$ bundle exec rackup
 ```
 
 Run tests
