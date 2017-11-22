@@ -213,11 +213,6 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   min-height: 360px;
-  background-image: url("./images/workspace.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position-x: 120%;
-  transform: translateY(50px);
 }
 
 .pricing h1 {
