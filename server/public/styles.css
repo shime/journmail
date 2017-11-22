@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+    
 html, body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
@@ -325,11 +329,14 @@ h1, h2, h3 {
 @media screen and (max-width: 600px) {
   .form-block .input {
     width: 100%;
+    max-width: 250px;
+    margin: 0;
   }
 
   .button-submit {
     width: 100%;
     margin-top: 8px;
+    max-width: 250px;
   }
 }
 
@@ -351,6 +358,11 @@ h1, h2, h3 {
   }
 
   .footer__credentials p {
-    display: block;
+    width: auto;
+  }
+
+  .footer__authors {
+    width: 100%;
+    text-align: center;
   }
 }
