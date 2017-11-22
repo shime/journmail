@@ -1,43 +1,73 @@
 (function() {
   'use strict';
 
+  function classSelector(position, selector) {
+    return document.querySelector("." + position + " ." + selector);
+  }
+
+  function topSelector(selector){
+    return classSelector("header", selector);
+  }
+
+  function bottomSelector(selector){
+    return classSelector("footer", selector);
+  }
+
   // Constants
   var CLASS_LOADING = "button--loading";
 
   // Elements
-  var $input = document.querySelector('.js-input');
-  var $submit = document.querySelector('.js-submit');
-  var $somethingWentWrong = document.querySelector(".something-went-wrong");
-  var $invalidEmail = document.querySelector(".invalid-email");
-  var $success = document.querySelector(".success");
-  var $errorMessage = document.querySelector(".error-message");
-  var $topForm = document.querySelector(".email-form-top");
-  var $bottomForm = document.querySelector(".email-form-bottom");
+  var $input = {
+    top: topSelector("js-input"),
+    bottom: bottomSelector("js-input")
+  };
+  var $submit = {
+    top: topSelector("js-submit"),
+    bottom: bottomSelector("js-submit")
+  };
+  var $somethingWentWrong = {
+    top: topSelector("something-went-wrong"),
+    bottom: bottomSelector("something-went-wrong")
+  };
+  var $invalidEmail = {
+    top: topSelector("invalid-email"),
+    bottom: bottomSelector("invalid-email")
+  };
+  var $success = {
+    top: topSelector("success"),
+    bottom: bottomSelector("success")
+  };
+  var $errorMessage = {
+    top: topSelector("error-message"),
+    bottom: bottomSelector("error-message")
+  };
+  var $form = {
+    top: topSelector("email-form"),
+    bottom: bottomSelector("email-form")
+  };
 
   // Add events
-  $submit.addEventListener('click', handleFormSubmit);
-  $topForm.addEventListener("submit", handleFormSubmit);
-  $bottomForm.addEventListener("submit", handleFormSubmit);
+  $submit.top.addEventListener("click", function (event) { handleFormSubmit(event, "top") });
+  $submit.bottom.addEventListener("click", function (event) { handleFormSubmit(event, "bottom") });
+  $form.top.addEventListener("submit", function (event) { handleFormSubmit(event, "top") });
+  $form.bottom.addEventListener("submit", function (event) { handleFormSubmit(event, "bottom") });
 
   // Determine timezone
   var tz = jstz.determine();
   var timezone = tz.name();
 
-  // Events
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    // Get input data
-    var email = $input.value;
+  function handleFormSubmit(event, position) {
+    event.preventDefault();
 
-    // Reset error messages
-    $success.style.display = "none";
-    $somethingWentWrong.style.display = "none";
-    $invalidEmail.style.display = "none";
-    $errorMessage.style.display = "none";
+    var email = $input[position].value;
 
+    $success[position].style.display = "none";
+    $somethingWentWrong[position].style.display = "none";
+    $invalidEmail[position].style.display = "none";
+    $errorMessage[position].style.display = "none";
 
     if (!email.match(/.*@.*\..*/)){
-      $invalidEmail.style.display = 'block';
+      $invalidEmail[position].style.display = 'block';
       return;
     }
 
@@ -46,29 +76,28 @@
       timezone: timezone
     };
 
-    $submit.classList.add(CLASS_LOADING);
+    $submit[position].classList.add(CLASS_LOADING);
 
-    submitForm(formData);
+    submitForm(formData, position);
   }
 
-  // Ajax events
-  function submitForm(formData) {
+  function submitForm(formData, position) {
     var xhr = new XMLHttpRequest();
     var url = "/register";
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
-        $submit.classList.remove(CLASS_LOADING);
+        $submit[position].classList.remove(CLASS_LOADING);
 
         if (xhr.status === 200) {
           var json = JSON.parse(xhr.responseText);
-          $success.style.display = "block";
+          $success[position].style.display = "block";
         } else if (xhr.status >= 400 && xhr.status < 500) {
-          $errorMessage.style.display = "block";
-          $errorMessage.innerHTML = JSON.parse(xhr.responseText).error;
+          $errorMessage[position].style.display = "block";
+          $errorMessage[position].innerHTML = JSON.parse(xhr.responseText).error;
         } else {
-          $somethingWentWrong.style.display = "block";
+          $somethingWentWrong[position].style.display = "block";
         }
       }
     };
