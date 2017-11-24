@@ -16,8 +16,8 @@ post "/register" do
 
   begin
     RegisterService.call(email)
-  rescue Sequel::UniqueConstraintViolation => ex
-    if ex.message =~ /email.*already exists/
+  rescue Sequel::UniqueConstraintViolation, RegisterService::EmailAlreadyTaken => ex
+    if ex.message =~ /email.*already exists|email.*is already taken/
       status 409
       return { error: "Email already taken, try another one." }.to_json
     end

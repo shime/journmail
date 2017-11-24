@@ -47,6 +47,12 @@ class User < Sequel::Model
   def streak
     StreakCalculator.call(self)
   end
+
+  def validate
+    super
+    validates_unique :email
+  end
 end
 
 User.plugin :timestamps, create: :created_at, update: :updated_at, update_on_create: true
+User.plugin :validation_helpers

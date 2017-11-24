@@ -1,9 +1,12 @@
 require 'postmark'
+
 require_relative '../constants'
 require_relative '../init'
 require_relative './create_user'
 
 class RegisterService
+  class EmailAlreadyTaken < StandardError; end
+
   def self.call(*args)
     new(*args).call
   end
@@ -16,6 +19,8 @@ class RegisterService
   end
 
   def call
+    raise EmailAlreadyTaken.new("email is already taken") unless @user.valid?
+
     @client.deliver_with_template(from: "shime@twobucks.co",
                                   to: @user.email,
                                   reply_to: "user+#{@user.token}@inbound.twobucks.co",
