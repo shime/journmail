@@ -49,7 +49,7 @@ get '/unsubscribe/:token' do
 
   @current_user.unsubscribe!
 
-  "Sorry to see you go"
+  erb :unsubscribe
 end
 
 post '/inbound' do
