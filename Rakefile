@@ -3,6 +3,12 @@ require 'cucumber'
 require 'cucumber/rake/task'
 require 'config'
 
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+end
+
 ENV["RACK_ENV"] ||= "development"
 
 Cucumber::Rake::Task.new(:features) do |t|
@@ -58,4 +64,4 @@ namespace :db do
   end
 end
 
-task :default => :features
+task :default => [:features, :spec]

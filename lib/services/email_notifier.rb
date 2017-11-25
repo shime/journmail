@@ -12,9 +12,7 @@ class EmailNotifierService
 
   def call
     User.paying.each do |user|
-      if user.time_to_send_notification?
-        NotificationMailer.deliver(user)
-      end
+      NotificationMailer.deliver(user)
     end
   end
 end

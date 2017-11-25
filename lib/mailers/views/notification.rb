@@ -1,12 +1,14 @@
 require "erb"
 
 require_relative "../../init"
+require_relative "../../utils/streak_body"
 
 class NotificationView
   def initialize(user, company_name = "Vedran & Hrvoje")
     @user = user
     @unsubscribe_link = link_to_unsubscribe(user)
     @company_name = company_name
+    @streak_body = StreakBody.call(user)
   end
 
   def to_html
