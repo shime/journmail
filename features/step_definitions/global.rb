@@ -1,12 +1,9 @@
 Given("there are some issues with mail delivery service") do
-  @mail_client = double
-  allow(@mail_client).to receive(:deliver_with_template).and_raise("boom")
+  allow(RegistrationMailer).to receive(:deliver).and_raise("boom")
 end
 
 Given("the mail delivery service works") do
-  @mail_client = double
-  allow(@mail_client).to receive(:deliver_with_template)
-  allow(Postmark::ApiClient).to receive(:new).and_return(@mail_client)
+  # do nothing
 end
 
 Given("I am a paying user") do
@@ -152,7 +149,8 @@ Then("my longest streak should be {int}") do |number|
 end
 
 Then("I should receive a registration email") do
-  expect(@mail_client).to have_received(:deliver_with_template)
+  expect(Mail::TestMailer.deliveries.length).to be(1)
+  expect(Mail::TestMailer.deliveries.first.subject).to eq("One more step required to register")
 end
 
 Then("the next payment should be scheduled for {int} days and should be {int}$") do |int, int2|
