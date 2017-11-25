@@ -279,6 +279,22 @@ h1, h2, h3 {
   text-decoration: none;
 }
 
+.register-thanks {
+  margin-top: 12rem;
+}
+
+.register-describe {
+  max-width: 400px;
+  margin: auto;
+}
+
+.header-small {
+  background: #DFC3FC;
+  background: -webkit-linear-gradient(to right, #DFC3FC, #97C5FC);
+  background: linear-gradient(to right, #DFC3FC, #97C5FC);
+  height: 150px;
+}
+
 /* Animation */
 @keyframes rotate {
   from {
@@ -359,5 +375,13 @@ h1, h2, h3 {
   .footer__authors {
     width: 100%;
     text-align: center;
+  }
+
+  .register-thanks {
+    margin-top: 10rem;
+  }
+
+  .register-describe {
+    width: 300px;
   }
 }

@@ -37,7 +37,7 @@ get '/register/:token' do
 
   @current_user.make_paying!
 
-  "Thanks for registering"
+  erb :register
 end
 
 get '/unsubscribe/:token' do
