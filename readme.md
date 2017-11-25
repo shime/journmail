@@ -29,6 +29,15 @@ Spin up a development server
 $ bundle exec rackup
 ```
 
+Spin up a fake mail server
+
+```shell
+$ gem install mailcatcher
+$ mailcatcher
+```
+
+Visit [http://localhost:1080/](http://localhost:1080/) to preview emails.
+
 Run tests
 
 ```shell
