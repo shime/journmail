@@ -92,7 +92,7 @@ html, body {
   background-color: #05C591;
 }
 
-.content {
+.content.register, .content.unsubscribe {
   background-image: url('/images/gplaypattern.png');
   background-repeat: repeat;
   height: 100%;
