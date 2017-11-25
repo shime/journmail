@@ -15,6 +15,7 @@ Feature: Emails
   Scenario: Not notifying unsubscribed users
     Given 2 paying users exist
     And 3 unsubscribed users exist
+    When time is 18:00 in "Europe/London" timezone
     When email notification is sent
     Then 2 email notifications should be received
 

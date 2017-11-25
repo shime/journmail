@@ -92,9 +92,7 @@ When("I add a new log entry") do
 end
 
 When("email notification is sent") do
-  @mail_client = double
-  allow(@mail_client).to receive(:deliver_with_template)
-  EmailNotifierService.call(@mail_client)
+  EmailNotifierService.call
 end
 
 When("I log entries for {int} consecutive days") do |int|
@@ -121,7 +119,8 @@ Then("server response should be success") do
 end
 
 Then("I should receive an email notification") do
-  expect(@mail_client).to have_received(:deliver_with_template)
+  expect(Mail::TestMailer.deliveries.length).to be(1)
+  expect(Mail::TestMailer.deliveries.first.subject).to eq("Your daily one sentence reminder")
 end
 
 Then("a new log entry should be created") do
@@ -186,5 +185,8 @@ Then("I should be unsubscribed") do
 end
 
 Then("{int} email notifications should be received") do |count|
-  expect(@mail_client).to have_received(:deliver_with_template).exactly(count).times
+  expect(Mail::TestMailer.deliveries.length).to be(2)
+  (0..(count - 1)).each do |i|
+    expect(Mail::TestMailer.deliveries[i].subject).to eq("Your daily one sentence reminder")
+  end
 end

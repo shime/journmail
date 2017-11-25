@@ -19,6 +19,10 @@ require_relative './../../lib/init'
 require_relative './../../server/index'
 require_relative './database_cleaner'
 
+Before do
+  Mail::TestMailer.deliveries.clear
+end
+
 Webrat.configure do |config|
   config.mode = :rack
 end
