@@ -75,8 +75,6 @@ GEM
     json (2.1.0)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    mail_view (2.0.4)
-      tilt
     method_source (0.8.2)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
@@ -145,7 +143,6 @@ DEPENDENCIES
   database_cleaner
   email_reply_parser!
   mail
-  mail_view
   pg
   postmark
   pry
