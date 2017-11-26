@@ -94,7 +94,7 @@ html, body {
   background-color: #254592;
 }
 
-.content.register, .content.unsubscribe {
+.content {
   background-image: url('/images/gplaypattern.png');
   background-repeat: repeat;
   height: 100%;
@@ -172,10 +172,11 @@ h1, h2, h3 {
 }
 
 .features {
-  max-width: 850px;
+  width: 100%;
   margin: 0 auto;
+  background-image: url('/images/gplaypattern.png');
+  background-repeat: repeat;
 }
-
 
 .features h1 {
   font-size: 32px;
@@ -185,8 +186,6 @@ h1, h2, h3 {
 }
 
 .features__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   margin: 60px 0;
 }
 
@@ -198,6 +197,11 @@ h1, h2, h3 {
   display: flex;
   padding: 20px;
   text-align: left;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  max-width: 400px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  background: #fff;
 }
 
 .feature__content {
@@ -222,6 +226,22 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   min-height: 360px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.pricing .card {
+  width: 600px;
+}
+
+.pricing .card-wrapper {
+  padding: 5px;
+  background: #DFC3FC;
+  background: -webkit-linear-gradient(to right, #DFC3FC, #97C5FC);
+  background: linear-gradient(to right, #DFC3FC, #97C5FC);
+  margin: 0 auto;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 .pricing h1 {
@@ -312,6 +332,7 @@ h1, h2, h3 {
   padding: 10px;
   color: #93c5fc;
 }
+
 .card-title {
   border-bottom: 1px solid rgba(0,0,0,.1);
 }
@@ -407,6 +428,10 @@ h1, h2, h3 {
   }
 
   .register-describe {
+    width: 300px;
+  }
+
+  .pricing .card {
     width: 300px;
   }
 }
