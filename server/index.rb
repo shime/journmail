@@ -32,7 +32,7 @@ get '/register/:token' do
   @current_user = User.find(token: params[:token])
 
   if !@current_user
-    return "User not found"
+    return erb(:not_found)
   end
 
   @current_user.make_paying!
@@ -44,7 +44,7 @@ get '/unsubscribe/:token' do
   @current_user = User.find(token: params[:token])
 
   if !@current_user
-    return "User not found"
+    return erb(:not_found)
   end
 
   @current_user.unsubscribe!
