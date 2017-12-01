@@ -13,27 +13,25 @@
   <link rel="stylesheet" href="/normalize.css">
   <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
-  <main role="main" class="content register">
-    <section class="header-small">
-      <a href='/'>
-        <img src="/images/logo.png" alt="Journmail logo" class="logo">
-      </a>
-    </section>
-    <% @log_entries.each do |entry| %>
-    <div class='card register-thanks'>
+<body class="content">
+  <section class="header-small">
+    <a href='/'>
+      <img src="/images/logo.png" alt="Journmail logo" class="logo">
+    </a>
+  </section>
+  <% @log_entries.each do |entry| %>
+    <div class='card'>
       <div class='card-title'>
         <h1 class="register-thanks" title="<%= entry.created_at %>"><%= "#{time_ago_in_words(entry.created_at)} ago" %></h1>
       </div>
       <p><%= entry.body %></p>
-    <% end %>
     </div>
-    <div class="footer__credentials">
-      <p class="footer__authors">Made by <a href="https://twitter.com/shimewastaken">@shimewastaken</a> and <a href="https://twitter.com/vblazenka">@vblazenka</a>.</p>
-      <p class="footer__company">© 2017 TwoBucks</p>
-    </div>
-  </main>
+  <% end %>
 
+  <div class="footer__credentials">
+    <p class="footer__authors">Made by <a href="https://twitter.com/shimewastaken">@shimewastaken</a> and <a href="https://twitter.com/vblazenka">@vblazenka</a>.</p>
+    <p class="footer__company">© 2017 TwoBucks</p>
+  </div>
   <script src="./script.js"></script>
 </body>
 </html>
