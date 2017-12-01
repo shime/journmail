@@ -1,5 +1,3 @@
-require 'postmark'
-
 require_relative '../init'
 require_relative './create_user'
 require_relative '../mailers/registration'

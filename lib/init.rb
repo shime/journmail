@@ -2,6 +2,7 @@ require "config"
 require "sequel"
 require "pry"
 require "mail"
+require "postmark"
 
 ENV["RACK_ENV"] ||= "development"
 

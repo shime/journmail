@@ -1,5 +1,3 @@
-require 'postmark'
-
 require_relative "../init"
 require_relative "../models/user"
 require_relative '../constants'
