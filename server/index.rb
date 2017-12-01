@@ -1,8 +1,15 @@
+require_relative "../lib/init"
+
 require "sinatra"
 require "json"
 require "pry"
 require "postmark"
 require "email_reply_parser"
+require "time-lord"
+require "action_view"
+require "action_view/helpers"
+
+include ActionView::Helpers::DateHelper
 
 require_relative "./../lib/services/email_response"
 require_relative "./../lib/services/register"
@@ -50,6 +57,18 @@ get '/unsubscribe/:token' do
   @current_user.unsubscribe!
 
   erb :unsubscribe
+end
+
+get '/history/:token' do
+  @current_user = User.find(token: params[:token])
+
+  if !@current_user
+    return erb(:not_found)
+  end
+
+  @log_entries = @current_user.log_entries
+
+  erb :history
 end
 
 post '/inbound' do
