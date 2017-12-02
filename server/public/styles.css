@@ -345,6 +345,10 @@ h1, h2, h3 {
   margin-top: 5rem;
 }
 
+.card-wrapper .card {
+  margin-top: 0;
+}
+
 /* Animation */
 @keyframes rotate {
   from {
