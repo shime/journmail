@@ -6,11 +6,26 @@ require "pry"
 require "email_reply_parser"
 require "action_view"
 require "action_view/helpers"
+require "logger"
 
 include ActionView::Helpers::DateHelper
 
 require_relative "./../lib/services/email_response"
 require_relative "./../lib/services/register"
+
+::Logger.class_eval { alias :write :'<<' }
+access_log = ::File.join(::File.dirname(::File.expand_path(__FILE__)),'..','logs','access.log')
+access_logger = ::Logger.new(access_log)
+error_logger = ::File.new(::File.join(::File.dirname(::File.expand_path(__FILE__)),'..','logs','error.log'),"a+")
+error_logger.sync = true
+
+configure do
+  use ::Rack::CommonLogger, access_logger
+end
+
+before {
+  env["rack.errors"] =  error_logger
+}
 
 get "/" do
   erb :index
