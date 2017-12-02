@@ -79,7 +79,8 @@ get '/history/:token' do
     return erb(:not_found)
   end
 
-  @log_entries = @current_user.log_entries
+  @log_entries = @current_user.log_entries_dataset.
+    order(Sequel.desc(:created_at)).all
 
   erb :history
 end
