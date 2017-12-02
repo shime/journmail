@@ -27,6 +27,8 @@ before {
   env["rack.errors"] =  error_logger
 }
 
+set :static_cache_control, [:public, max_age: 0]
+
 get "/" do
   erb :index
 end
