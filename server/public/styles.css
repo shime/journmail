@@ -172,6 +172,17 @@ h1, h2, h3 {
   padding: 40px 0;
 }
 
+.streak {
+  background-color: #fff;
+  height: 50px;
+  padding: 10px;
+}
+
+.streak h3 {
+  margin: 0;
+  vertical-align: middle;
+}
+
 .features {
   width: 100%;
   margin: 0 auto;

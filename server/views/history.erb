@@ -19,6 +19,11 @@
       <img src="/images/logo.png" alt="Journmail logo" class="logo">
     </a>
   </section>
+  <section class="streak">
+    <h3>
+      Your streak is <b><%= @streak %></b> days.
+    </h3>
+  </section>
   <% @log_entries.each do |entry| %>
     <div class='card'>
       <div class='card-title'>

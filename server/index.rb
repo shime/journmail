@@ -81,6 +81,7 @@ get '/history/:token' do
 
   @log_entries = @current_user.log_entries_dataset.
     order(Sequel.desc(:created_at)).all
+  @streak = @current_user.streak
 
   erb :history
 end
