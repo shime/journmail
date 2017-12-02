@@ -3,7 +3,7 @@ require_relative './views/registration'
 class RegistrationMailer 
   def self.deliver(user)
     message = Mail.new do
-      from          "shime@twobucks.co"
+      from          "do-not-reply@twobucks.co"
       to            user.email
       reply_to      "user+#{user.token}@inbound.twobucks.co"
       subject       "One more step required to register"
