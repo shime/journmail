@@ -168,6 +168,7 @@ label {
 section.image {
   background-image: url('/images/gplaypattern.png');
   background-repeat: repeat;
+  height: 300px;
 }
 
 .email-label {
@@ -458,7 +459,7 @@ h1, h2, h3 {
     margin-left: 0;
   }
 
-  .email-image {
+  section.image {
     display: none;
   }
 }
@@ -509,7 +510,7 @@ h1, h2, h3 {
     margin-left: 0;
   }
 
-  .email-image {
+  section.image {
     display: none;
   }
 }
