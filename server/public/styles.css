@@ -88,10 +88,16 @@ html, body {
   transition: background-color .2s ease;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
   -webkit-text-size-adjust: none;
+  vertical-align: top;
+  margin-left: 10px;
 }
 
 .button:hover {
   background-color: #254592;
+}
+
+label {
+  font-weight: 300;
 }
 
 .content {
@@ -152,6 +158,18 @@ html, body {
 }
 .input::-ms-input-placeholder { /* Microsoft Edge */
   color:    #aaa;
+}
+
+.email-section {
+  display: inline-block;
+  width: 350px;
+}
+
+.email-label {
+  position: relative;
+  display: block;
+  text-align: center;
+  color: #fff;
 }
 
 .form-block {
@@ -414,6 +432,10 @@ h1, h2, h3 {
     margin-top: 8px;
     max-width: 250px;
   }
+
+  .email-section {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 468px) {
@@ -452,5 +474,13 @@ h1, h2, h3 {
 
   .pricing .card {
     width: 300px;
+  }
+
+  .email-section {
+    width: 100%;
+  }
+
+  .button {
+    margin-left: 0;
   }
 }
