@@ -165,6 +165,11 @@ label {
   width: 350px;
 }
 
+section.image {
+  background-image: url('/images/gplaypattern.png');
+  background-repeat: repeat;
+}
+
 .email-label {
   position: relative;
   display: block;
@@ -378,6 +383,14 @@ h1, h2, h3 {
   margin-top: 0;
 }
 
+.email-image {
+  display: inline;
+  top: -100px;
+  position: relative;
+  box-shadow: 0 10px 30px #dee1e7;
+  z-index: 100;
+}
+
 /* Animation */
 @keyframes rotate {
   from {
@@ -418,6 +431,10 @@ h1, h2, h3 {
   .feature p {
     font-size: 14px;
   }
+
+  .email-image {
+    width: 600px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -435,6 +452,14 @@ h1, h2, h3 {
 
   .email-section {
     width: 100%;
+  }
+
+  .button {
+    margin-left: 0;
+  }
+
+  .email-image {
+    display: none;
   }
 }
 
@@ -482,5 +507,9 @@ h1, h2, h3 {
 
   .button {
     margin-left: 0;
+  }
+
+  .email-image {
+    display: none;
   }
 }
