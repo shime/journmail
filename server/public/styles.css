@@ -121,7 +121,6 @@ label {
 .button--loading {
   min-width: 140px;
   height: 45px;
-  vertical-align: middle;
 }
 
 .button--loading span {
