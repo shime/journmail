@@ -336,6 +336,14 @@ h1, h2, h3 {
   margin: 20px;
 }
 
+.emoji {
+  min-height: 10rem;
+}
+
+.emoji h1 {
+  margin-top: 5rem;
+}
+
 .footer {
   position: relative;
   display: flex;
@@ -346,7 +354,7 @@ h1, h2, h3 {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
-  background-color: #fbfbfb;
+  background-color: #fff;
 }
 
 .footer-form {
