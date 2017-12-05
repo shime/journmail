@@ -198,7 +198,7 @@ h1, h2, h3 {
 
 .streak {
   background-color: #fff;
-  height: 50px;
+  height: 80px;
   padding: 10px;
 }
 
@@ -447,6 +447,7 @@ h1, h2, h3 {
 
 .card.register-thanks {
   margin-top: 10rem;
+  max-width: 400px;
 }
 
 .card {
@@ -464,6 +465,11 @@ h1, h2, h3 {
   box-shadow: 0 10px 30px #dee1e7;
   z-index: 100;
 }
+
+.streak img {
+  height: 30px;
+}
+
 
 /* Animation */
 @keyframes rotate {

@@ -20,8 +20,9 @@
     </a>
   </section>
   <section class="streak">
+    <img src='/images/fire.svg' alt='Streak' />
     <h3>
-      Your streak is <b><%= @streak %></b> days.
+      Your streak is <b><%= @streak %></b> days. <% if @streak == 0 %> 😢 <% else %> 😎 <% end %> 
     </h3>
   </section>
   <% @log_entries.each do |entry| %>
