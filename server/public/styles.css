@@ -441,6 +441,15 @@ h1, h2, h3 {
   color: #93c5fc;
 }
 
+.history {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.history .card {
+  margin: 20px;
+}
+
 .card-title {
   border-bottom: 1px solid rgba(0,0,0,.1);
 }
@@ -624,5 +633,11 @@ h1, h2, h3 {
 
   .pricing .card {
     margin-bottom: 50px;
+  }
+
+  .history .card {
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
   }
 }
