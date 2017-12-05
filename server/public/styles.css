@@ -173,8 +173,9 @@ section.image {
 .email-label {
   position: relative;
   display: block;
-  text-align: center;
+  text-align: left;
   color: #fff;
+  margin-top: 3px;
 }
 
 .form-block {
@@ -567,6 +568,10 @@ h1, h2, h3 {
 
   .email-section {
     width: 100%;
+  }
+
+  .email-label {
+    text-align: center;
   }
 
   .button {
