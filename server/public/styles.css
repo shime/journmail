@@ -223,6 +223,7 @@ h1, h2, h3 {
 
 .features__grid {
   margin: 60px 0;
+  display: grid;
 }
 
 .bottom-spacing {
@@ -258,6 +259,12 @@ h1, h2, h3 {
   color: #8b8b8b;
 }
 
+.feature img {
+  height: 70px;
+  margin-top: 30px;
+}
+
+
 .consistency {
   min-height: 10rem;
   position: relative;
@@ -265,6 +272,11 @@ h1, h2, h3 {
 
 .consistency h1 {
   margin-top: 5rem;
+  background: -webkit-linear-gradient(to right, #DFC3FC, #97C5FC);
+  background: linear-gradient(to right, #DFC3FC, #97C5FC);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .consistency .logo {
@@ -343,6 +355,13 @@ h1, h2, h3 {
 
 .emoji h1 {
   margin-top: 5rem;
+  background: linear-gradient(to right, #DFC3FC, #97C5FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.emoji p {
+  font-size: 50px;
 }
 
 .footer {
@@ -472,11 +491,6 @@ h1, h2, h3 {
 
   .header {
     height: 95vh;
-  }
-
-  .feature img {
-    width: 70px;
-    height: 70px;
   }
 
   .feature h3 {
