@@ -232,7 +232,7 @@ h1, h2, h3 {
   display: flex;
   padding: 20px;
   text-align: left;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  box-shadow: 0 10px 30px #dee1e7;
   max-width: 400px;
   margin: 0 auto;
   margin-bottom: 50px;
@@ -257,25 +257,32 @@ h1, h2, h3 {
   color: #8b8b8b;
 }
 
+.consistency {
+  min-height: 10rem;
+  position: relative;
+}
+
+.consistency h1 {
+  margin-top: 5rem;
+}
+
+.consistency .logo {
+  margin-top: 20px;
+  border: 3px #b8c4fc solid;
+  border-radius: 100px;
+}
+
 .pricing {
   display: flex;
   flex-direction: column;
   min-height: 360px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #fbfbfb;
 }
 
 .pricing .card {
   width: 600px;
-}
-
-.pricing .card-wrapper {
-  padding: 3px;
-  background: #DFC3FC;
-  background: -webkit-linear-gradient(to right, #DFC3FC, #97C5FC);
-  background: linear-gradient(to right, #DFC3FC, #97C5FC);
-  margin: 0 auto;
-  margin-bottom: 50px;
-  margin-top: 50px;
+  box-shadow: 0 10px 30px #dee1e7;
 }
 
 .pricing h1 {
@@ -301,6 +308,7 @@ h1, h2, h3 {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
+  background-color: #fbfbfb;
 }
 
 .footer-form {
@@ -359,7 +367,7 @@ h1, h2, h3 {
 
 .card {
   background-color: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 2px 2px -2px rgba(0,0,0,.1), 0 2px 2px 0 rgba(0,0,0,.12);
+  box-shadow: 0 10px 30px #dee1e7;
   width: 330px;
   border-radius: 2px;
   margin: auto;
@@ -511,5 +519,15 @@ h1, h2, h3 {
 
   section.image {
     display: none;
+  }
+
+  .consistency .logo {
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  .consistency h1 {
+    margin-top: 2rem;
+    margin-bottom: 5rem;
   }
 }
