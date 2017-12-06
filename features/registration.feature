@@ -25,3 +25,9 @@ Feature: Registration
     Given there are some issues with mail delivery service
     When I try to register with "shime@twobucks.co"
     Then there should be 0 registered users
+
+  Scenario: Re-subscribing
+    Given an unsubscribed user with email "shime@twobucks.co" exists
+    When I try to register with "shime@twobucks.co" via API
+    Then server response status should be 200
+    And user with email "shime@twobucks.co" should have status "paying"

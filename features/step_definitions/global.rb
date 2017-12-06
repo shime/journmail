@@ -47,6 +47,10 @@ Given("a user with email {string} exists") do |email|
   CreateUserService.call({ email: email }, true)
 end
 
+Given("an unsubscribed user with email {string} exists") do |email|
+  User.create(email: email, token: "foo", status: User::STATUSES[:unsubscribed])
+end
+
 When("I visit the unsubscribe page") do 
   visit("/unsubscribe/#{@current_user.token}")
 end
@@ -189,4 +193,8 @@ Then("{int} email notifications should be received") do |count|
   (0..(count - 1)).each do |i|
     expect(Mail::TestMailer.deliveries[i].subject).to eq("Your daily one sentence reminder")
   end
+end
+
+Then("user with email {string} should have status {string}") do |email, status|
+  expect(User.find(email: email).status).to eq(status)
 end
