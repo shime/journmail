@@ -1,4 +1,4 @@
-# Journmail
+# [Journmail](https://journmail.com)
 
 [![Build Status](https://travis-ci.org/shime/journmail.svg)](https://travis-ci.org/shime/journmail)
 [![To Do](https://badge.waffle.io/shime/journmail.svg?columns=To%20Do)](https://waffle.io/shime/journmail)
