@@ -1,3 +1,3 @@
 urls:
-  registration: "http://95.85.19.192/register"
-  unsubscribe: "http://95.85.19.192/unsubscribe"
+  registration: "https://journmail.com/register"
+  unsubscribe: "https://journmail.com/unsubscribe"
