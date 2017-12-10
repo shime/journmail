@@ -5,6 +5,7 @@ require_relative "./../services/streak_calculator"
 
 class User < Sequel::Model
   one_to_many :log_entries
+  one_to_one :paypal_subscription
 
   EMAIL_NOTIFY_AT_HOURS = 18 # notify user by email at 18:00 in their timezone
 

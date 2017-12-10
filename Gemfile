@@ -11,6 +11,7 @@ gem 'email_reply_parser', git: "https://github.com/shime/email_reply_parser.git"
 gem 'whenever', require: false
 gem 'activesupport'
 gem 'actionview'
+gem 'httparty'
 
 group :development do
   gem 'pry'

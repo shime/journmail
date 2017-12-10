@@ -7,11 +7,14 @@ require "email_reply_parser"
 require "action_view"
 require "action_view/helpers"
 require "logger"
+require "httparty"
 
 include ActionView::Helpers::DateHelper
 
 require_relative "./../lib/services/email_response"
 require_relative "./../lib/services/register"
+require_relative "./../lib/models/paypal_subscription"
+require_relative "./../lib/utils/paypal"
 
 ::Logger.class_eval { alias :write :'<<' }
 access_log = ::File.join(::File.dirname(::File.expand_path(__FILE__)),'..','logs','access.log')
@@ -28,6 +31,7 @@ before {
 }
 
 set :static_cache_control, [:public, max_age: 0]
+set :server_settings, timeout: 60
 
 get "/" do
   erb :index
@@ -74,6 +78,16 @@ get '/unsubscribe/:token' do
   erb :unsubscribe
 end
 
+get '/subscribe/:token' do
+  @current_user = User.find(token: params[:token])
+
+  if !@current_user
+    return erb(:not_found)
+  end
+
+  erb :subscribe
+end
+
 get '/history/:token' do
   @current_user = User.find(token: params[:token])
 
@@ -86,6 +100,66 @@ get '/history/:token' do
   @streak = @current_user.streak
 
   erb :history
+end
+
+post '/pay/month/:token' do
+  @current_user = User.find(token: params[:token])
+
+  if !@current_user
+    return erb(:not_found)
+  end
+
+  paypal = Utils::Paypal::Sandbox.new
+  plan = paypal.make_infinite_monthly_plan(token: params[:token])
+  plan.activate
+  billing_agreement = paypal.make_billing_agreement(plan)
+
+  redirect_url = billing_agreement.urls[0]["href"]
+
+  @current_user.paypal_subscription = PaypalSubscription.
+    create(token: CGI.parse(URI.parse(redirect_url).query)["token"][0],
+           status: "pending",
+           plan: "monthly",
+           execute_url: billing_agreement.urls[1]["href"])
+
+  return { url: redirect_url }.to_json
+end
+
+post '/pay/year/:token' do
+  @current_user = User.find(token: params[:token])
+
+  if !@current_user
+    return erb(:not_found)
+  end
+
+  paypal = Utils::Paypal::Sandbox.new
+  plan = paypal.make_infinite_yearly_plan(token: params[:token])
+  plan.activate
+  billing_agreement = paypal.make_billing_agreement(plan)
+
+  redirect_url = billing_agreement.urls[0]["href"]
+
+  @current_user.paypal_subscription = PaypalSubscription.
+    create(token: CGI.parse(URI.parse(redirect_url).query)["token"][0],
+           status: "pending",
+           plan: "yearly",
+           execute_url: billing_agreement.urls[1]["href"])
+
+  return { url: redirect_url }.to_json
+end
+
+
+get '/activate-subscription/:token' do
+  paypal_token = CGI.parse(request.query_string)["token"][0]
+
+  paypal = Utils::Paypal::Sandbox.new
+  paypal.execute_agreement(paypal_token)
+
+  PaypalSubscription.find(token: paypal_token).update(status: "active")
+
+  @token = params[:token]
+
+  erb :thanks_for_paying
 end
 
 post '/inbound' do

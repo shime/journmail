@@ -4,3 +4,6 @@ urls:
   unsubscribe: "http://localhost:4567/unsubscribe"
 postmark:
   api_key: <%= ENV["POSTMARK_API_KEY"] %>
+paypal:
+  client: <%= ENV.fetch("PAYPAL_CLIENT") %>
+  secret: <%= ENV.fetch("PAYPAL_SECRET") %>
