@@ -2,7 +2,7 @@ require "config"
 
 module Utils
   module Paypal
-    class BillingAgreement < Struct.new(:urls); end
+    class BillingAgreement < Struct.new(:urls, :id); end
 
     class Plan < Struct.new(:id, :base_uri, :headers, :description)
       def activate
@@ -48,7 +48,8 @@ module Utils
           }.to_json
         })
 
-        BillingAgreement.new(response.parsed_response["links"])
+        BillingAgreement.new(response.parsed_response["links"],
+                             response.parsed_response["plan"]["id"])
       end
 
       def make_infinite_monthly_plan(description: "Journmail monthly plan", price: 2, token:)
@@ -137,6 +138,10 @@ module Utils
       def execute_agreement(paypal_token)
         HTTParty.post("https://api.sandbox.paypal.com/v1/payments/billing-agreements/#{paypal_token}/agreement-execute",
                       headers: headers)
+      end
+
+      def unsubscribe(id)
+        HTTParty.post("#{base_uri}/v1/payments/billing-agreements/#{id}/cancel")
       end
     end
 

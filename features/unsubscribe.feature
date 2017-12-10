@@ -5,5 +5,5 @@ Feature: Unsubscribe
 
   Scenario: Unsubscribing
     Given I am a paying user
-    When I visit the unsubscribe page
+    When I try to unsubscribe via API
     Then I should be unsubscribed

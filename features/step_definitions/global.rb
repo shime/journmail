@@ -55,6 +55,10 @@ When("I visit the unsubscribe page") do
   visit("/unsubscribe/#{@current_user.token}")
 end
 
+When("I try to unsubscribe via API") do
+  post "/unsubscribe/#{@current_user.token}"
+end
+
 When("I try to register with {string}") do |email|
   begin
     RegisterService.call(email)

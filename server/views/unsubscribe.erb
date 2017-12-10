@@ -21,10 +21,23 @@
       </a>
     </section>
     <div class='card register-thanks'>
-      <div class='card-title'>
-        <h1 class="register-thanks">Sorry to see you go.</h1>
-      </div>
-      <p>You are now unsubscribed from all Journmail emails. Feel free to re-subscribe by registering once again.</p>
+      <% if @current_user.paypal_subscription&.active? %>
+        <p>Click the below button to cancel your PayPal subscription and
+           unsubscribe from all Journmail emails.</p>
+      <% else %>
+        <p>
+          Click the below button to unsubscribe from all Journmail emails.
+        </p>
+      <% end %>
+
+      <button class="button button-submit js-submit">
+        <span class="button-loading"></span>
+        <span> Unsubscribe </span>
+      </button>
+
+      <div class="error-message" style="display:none; margin-top: 30px"> </div>
+      <div class="something-went-wrong" style="display:none; margin-top: 30px"> Something went wrong. </div>
+      <div class="success-message" style="display:none; margin-top: 30px"> Sorry to see you go! You are now unsubscribed from all Journmail emails. </div>
     </div>
     <div class="footer__credentials">
       <p class="footer__authors">Made by <a href="https://twitter.com/shimewastaken">@shimewastaken</a> and <a href="https://twitter.com/vblazenka">@vblazenka</a>.</p>
@@ -32,6 +45,6 @@
     </div>
   </main>
 
-  <script src="./script.js"></script>
+  <script src="/unsubscribe.js"></script>
 </body>
 </html>

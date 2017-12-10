@@ -73,9 +73,28 @@ get '/unsubscribe/:token' do
     return erb(:not_found)
   end
 
+  erb :unsubscribe
+end
+
+post '/unsubscribe/:token' do
+  @current_user = User.find(token: params[:token])
+
+  if !@current_user
+    status 401
+    return {error: "User not found"}.to_json
+  end
+
+  subscription = @current_user.paypal_subscription
+
+  if subscription&.active?
+    paypal = Utils::Paypal::Sandbox.new
+    paypal.unsubscribe(subscription.agreement_id)
+    subscription.unsubscribe!
+  end
+
   @current_user.unsubscribe!
 
-  erb :unsubscribe
+  {}.to_json
 end
 
 get '/subscribe/:token' do
@@ -120,7 +139,8 @@ post '/pay/month/:token' do
     create(token: CGI.parse(URI.parse(redirect_url).query)["token"][0],
            status: "pending",
            plan: "monthly",
-           execute_url: billing_agreement.urls[1]["href"])
+           execute_url: billing_agreement.urls[1]["href"],
+           agreement_id: billing_agreement.id)
 
   return { url: redirect_url }.to_json
 end
