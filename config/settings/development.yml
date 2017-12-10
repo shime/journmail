@@ -1,0 +1,3 @@
+paypal:
+  client: <%= ENV.fetch("PAYPAL_CLIENT") %>
+  secret: <%= ENV.fetch("PAYPAL_SECRET") %>

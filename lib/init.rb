@@ -23,4 +23,3 @@ when "test"
     delivery_method :test
   end
 end
-
