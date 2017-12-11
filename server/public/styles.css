@@ -291,6 +291,7 @@ h1, h2, h3 {
   min-height: 360px;
   background-color: #fbfbfb;
   padding: 50px;
+  position: relative;
 }
 
 .pricing.no-background {
@@ -302,6 +303,28 @@ h1, h2, h3 {
   max-width: 900px;
   display: flex;
   flex-direction: row;
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+
+.pricing .banner {
+  background-color: #fff;
+  text-align:center;
+  font-size: 50px;
+  height: 120px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: #3498db;
+  z-index: 2;
+  width: 700px;
+  box-shadow: 0 10px 30px #dee1e7;
 }
 
 .pricing .card {
@@ -497,6 +520,7 @@ h1, h2, h3 {
   margin-top: 50px;
 }
 
+
 /* Animation */
 @keyframes rotate {
   from {
@@ -571,6 +595,11 @@ h1, h2, h3 {
   .pricing-wrapper {
     padding: 0;
     width: 100%;
+  }
+
+  .pricing .banner {
+    width: 400px;
+    font-size: 40px;
   }
 }
 
@@ -656,5 +685,10 @@ h1, h2, h3 {
     margin-left: 0px;
     margin-right: 0px;
     width: 100%;
+  }
+
+  .pricing .banner {
+    width: 300px;
+    font-size: 30px;
   }
 }
