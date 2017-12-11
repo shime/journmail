@@ -25,6 +25,6 @@ class NotificationView
     end
 
     def link_to_history(user)
-      "#{Settings.urls.history}/#{user.token}
+      "#{Settings.urls.history}/#{user.token}"
     end
 end
