@@ -3,5 +3,5 @@ urls:
   unsubscribe: "https://journmail.com/unsubscribe"
   history: "https://journmail.com/history"
 paypal:
-  client: <%= ENV.fetch("PAYPAL_CLIENT") %>
-  secret: <%= ENV.fetch("PAYPAL_SECRET") %>
+  client: <%= ENV["PAYPAL_CLIENT"] %>
+  secret: <%= ENV["PAYPAL_SECRET"] %>
