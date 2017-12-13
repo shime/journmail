@@ -38,10 +38,12 @@ get "/" do
 end
 
 post "/register" do
-  email = JSON.parse(request.body.read)["email"]
+  body = request.body.read
+  email = JSON.parse(body)["email"]
+  timezone = JSON.parse(body)["timezone"]
 
   begin
-    RegisterService.call(email)
+    RegisterService.call(email, timezone)
   rescue Sequel::UniqueConstraintViolation, RegisterService::EmailAlreadyTaken => ex
     if ex.message =~ /email.*already exists|email.*is already taken/
       status 409
