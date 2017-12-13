@@ -32,7 +32,7 @@
         <div class='card-title'>
           <h1 class="register-thanks" title="<%= entry.created_at %>"><%= "#{time_ago_in_words(entry.created_at)} ago" %></h1>
         </div>
-        <p><%= entry.body %></p>
+        <p><%= h entry.body %></p>
       </div>
     <% end %>
   </section>

@@ -191,3 +191,7 @@ post '/inbound' do
 
   "Thanks for sending message"
 end
+
+def h(html)
+  CGI.escapeHTML(html)
+end
