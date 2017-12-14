@@ -194,6 +194,14 @@ post '/inbound' do
   "Thanks for sending message"
 end
 
+get '/privacy' do
+  erb :privacy
+end
+
+get '/terms' do
+  erb :terms
+end
+
 def h(html)
   CGI.escapeHTML(html)
 end
