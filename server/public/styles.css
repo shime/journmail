@@ -3,13 +3,16 @@
   -webkit-overflow-scrolling: touch;
 }
 
-
 html, body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   text-align: center;
   overflow-x: hidden;
   height: 100%;
+}
+
+a {
+  color: #fff;
 }
 
 .header {
