@@ -3,5 +3,7 @@ urls:
   registration: "http://localhost:4567/register"
   unsubscribe: "http://localhost:4567/unsubscribe"
   history: "http://localhost:4567/history"
+  privacy_policy: "http://localhost:4567/privacy"
+  terms: "http://localhost:4567/terms"
 postmark:
   api_key: <%= ENV["POSTMARK_API_KEY"] %>

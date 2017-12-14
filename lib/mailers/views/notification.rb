@@ -8,6 +8,8 @@ class NotificationView
     @user = user
     @unsubscribe_link = link_to_unsubscribe(user)
     @history_link = link_to_history(user)
+    @terms_link = link_to_terms
+    @privacy_link = link_to_privacy_policy
     @company_name = company_name
     @streak_body = StreakBody.call(user)
   end
@@ -26,5 +28,13 @@ class NotificationView
 
     def link_to_history(user)
       "#{Settings.urls.history}/#{user.token}"
+    end
+
+    def link_to_terms
+      "#{Settings.urls.terms}"
+    end
+
+    def link_to_privacy_policy
+      "#{Settings.urls.privacy_policy}"
     end
 end
