@@ -418,7 +418,9 @@
                       <p>Simply respond to this email with a sentence or two and it will be added to your daily log.</p>
 
                       <% if @user.log_entries.length > 0 %>
-                        <p>To view your history, navigate your browser to <a href="<%= @history_link %>">your history page</a>.
+                        <p>To view your history, navigate your browser to <a href="<%= @history_link %>">your history page</a>.</p>
+                        <p>Keep your history link private, since visiting it lists entire history of your entries. Never give
+                           link to your history or share your history page, since it contains your private token.</p>
                       <% end %>
 
                       <p>Thanks,
