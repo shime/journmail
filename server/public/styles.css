@@ -492,6 +492,7 @@ h1, h2, h3 {
 
 .history {
   margin: 0 auto;
+  min-height: 50vh;
 }
 
 .history .card {
