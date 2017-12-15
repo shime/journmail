@@ -504,6 +504,16 @@ h1, h2, h3 {
   margin-top: 0;
 }
 
+.card .time {
+  font-weight: lighter;
+}
+
+.card .body {
+  color: #8b8b8b;
+  font-weight: 200;
+  line-height: 22px;
+}
+
 .email-image {
   display: inline;
   top: -100px;

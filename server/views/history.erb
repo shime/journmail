@@ -30,9 +30,13 @@
     <% @log_entries.each do |entry| %>
       <div class='card grid-item'>
         <div class='card-title'>
-          <h1 class="register-thanks" title="<%= entry.created_at %>"><%= "#{time_ago_in_words(entry.created_at)} ago" %></h1>
+          <small class='time'>
+            <%= humanize_time(entry.local_created_at) %>
+          </small>
         </div>
-        <p><%= h entry.body %></p>
+        <div class='body'>
+          <p><%= h entry.body %></p>
+        </div>
       </div>
     <% end %>
   </section>

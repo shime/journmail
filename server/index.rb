@@ -210,3 +210,7 @@ end
 def h(html)
   CGI.escapeHTML(html)
 end
+
+def humanize_time(time)
+  "#{time.strftime("%d %B at %H:%M")} (#{time.strftime("%A")})"
+end
