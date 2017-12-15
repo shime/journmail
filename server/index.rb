@@ -202,6 +202,11 @@ get '/terms' do
   erb :terms
 end
 
+not_found do
+  status 404
+  erb :not_found
+end
+
 def h(html)
   CGI.escapeHTML(html)
 end

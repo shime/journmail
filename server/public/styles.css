@@ -81,7 +81,7 @@ a {
 .button {
   padding: 15px 30px;
   background-color: #3869D4;
-  color: white;
+  color: white !important;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 700;
@@ -95,6 +95,7 @@ a {
   -webkit-text-size-adjust: none;
   vertical-align: top;
   margin-left: 10px;
+  text-decoration: none;
 }
 
 .button:hover {
