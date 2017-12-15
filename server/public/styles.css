@@ -204,13 +204,23 @@ h1, h2, h3 {
 
 .streak {
   background-color: #fff;
-  height: 80px;
+  height: 50px;
   padding: 10px;
 }
 
 .streak h3 {
   margin: 0;
   vertical-align: middle;
+}
+
+.streak img {
+  height: 30px;
+}
+
+.streak span {
+  position: relative;
+  bottom: 5px;
+  left: 5px;
 }
 
 .features {
@@ -524,10 +534,6 @@ h1, h2, h3 {
   position: relative;
   box-shadow: 0 10px 30px #dee1e7;
   z-index: 100;
-}
-
-.streak img {
-  height: 30px;
 }
 
 .card.pay {

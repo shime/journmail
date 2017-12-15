@@ -21,9 +21,8 @@
     </a>
   </section>
   <section class="streak">
-    <img src='/images/fire.svg' alt='Streak' />
     <h3>
-      Your streak is <b><%= @streak %></b> days. <% if @streak == 0 %> 😢 <% else %> 😎 <% end %> 
+      <img src='/images/fire.svg' alt='Streak' /><span><%= @streak %></span>
     </h3>
   </section>
   <section class='history grid'>
