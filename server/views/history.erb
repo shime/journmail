@@ -30,6 +30,10 @@
     <% @log_entries.each do |entry| %>
       <div class='card grid-item'>
         <div class='card-title'>
+          <% if @image_url %>
+            <img title="Change your Gravatar at gravatar.com" class='profile' src='<%= @image_url %>' alt='Your image' />
+            <br />
+          <% end %>
           <small class='time'>
             <%= humanize_time(entry.local_created_at) %>
           </small>

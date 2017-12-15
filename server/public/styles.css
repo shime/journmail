@@ -508,6 +508,10 @@ h1, h2, h3 {
   font-weight: lighter;
 }
 
+.card .profile {
+  border-radius: 100px;
+}
+
 .card .body {
   color: #8b8b8b;
   font-weight: 200;

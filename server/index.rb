@@ -15,6 +15,7 @@ require_relative "./../lib/services/email_response"
 require_relative "./../lib/services/register"
 require_relative "./../lib/models/paypal_subscription"
 require_relative "./../lib/utils/paypal"
+require_relative "./../lib/utils/gravatar"
 
 ::Logger.class_eval { alias :write :'<<' }
 access_log = ::File.join(::File.dirname(::File.expand_path(__FILE__)),'..','logs','access.log')
@@ -119,6 +120,10 @@ get '/history/:token' do
   @log_entries = @current_user.log_entries_dataset.
     order(Sequel.desc(:created_at)).all
   @streak = @current_user.streak
+
+  if Utils::Gravatar.exists?(@current_user.email)
+    @image_url = Utils::Gravatar.url(@current_user.email)
+  end
 
   erb :history
 end
