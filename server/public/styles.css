@@ -454,6 +454,7 @@ h1, h2, h3 {
   font-weight: 700;
 }
 
+
 .footer__credentials a {
   color: #3498db;
   text-decoration: none;
@@ -601,6 +602,11 @@ pre {
     padding: 0;
     width: 100%;
   }
+
+  .footer-small.footer__credentials {
+    position: relative;
+    bottom: -100px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -637,9 +643,25 @@ pre {
     width: 400px;
     font-size: 40px;
   }
+
+  .footer-small.footer__credentials {
+    position: relative;
+    bottom: -100px;
+  }
 }
 
 @media screen and (max-width: 468px) {
+  .header-small {
+    height: 70px;
+  }
+
+
+  .logo {
+    width: 50px;
+    height: 50px;
+    top: 10px;
+  }
+
   .features__grid {
     grid-template-columns: none;
   }
@@ -658,6 +680,11 @@ pre {
 
   .footer__credentials p {
     width: auto;
+  }
+
+  .footer-small.footer__credentials {
+    position: relative;
+    bottom: -100px;
   }
 
   .footer__authors {
