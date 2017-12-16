@@ -6,10 +6,18 @@ require "pry"
 require "email_reply_parser"
 require "logger"
 require "sinatra/content_for"
+require 'raven'
 
 require_relative "./../lib/services/email_response"
 require_relative "./../lib/services/register"
 require_relative "./../lib/utils/gravatar"
+
+
+if ENV["RACK_ENV"] == "production"
+  Raven.configure do |config|
+    config.dsn = Settings.urls.sentry
+  end
+end
 
 ::Logger.class_eval { alias :write :'<<' }
 access_log = ::File.join(::File.dirname(::File.expand_path(__FILE__)),'..','logs','access.log')
@@ -19,6 +27,10 @@ error_logger.sync = true
 
 configure do
   use ::Rack::CommonLogger, access_logger
+
+  if ENV["RACK_ENV"] == "production"
+    use Raven::Rack
+  end
 end
 
 before {
