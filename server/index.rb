@@ -4,12 +4,8 @@ require "sinatra"
 require "json"
 require "pry"
 require "email_reply_parser"
-require "action_view"
-require "action_view/helpers"
 require "logger"
 require "httparty"
-
-include ActionView::Helpers::DateHelper
 
 require_relative "./../lib/services/email_response"
 require_relative "./../lib/services/register"
