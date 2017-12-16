@@ -4,6 +4,3 @@ urls:
   history: "https://journmail.com/history"
   privacy_policy: "https://journmail.com/privacy"
   terms: "https://journmail.com/terms"
-paypal:
-  client: <%= ENV["PAYPAL_CLIENT"] %>
-  secret: <%= ENV["PAYPAL_SECRET"] %>

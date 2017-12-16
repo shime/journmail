@@ -1,3 +1,0 @@
-paypal:
-  client: <%= ENV["PAYPAL_CLIENT"] %>
-  secret: <%= ENV["PAYPAL_SECRET"] %>

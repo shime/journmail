@@ -1,5 +1,9 @@
 Sequel.migration do
   up do
+    drop_table(:paypal_subscriptions)
+  end
+
+  down do
     create_table(:paypal_subscriptions) do
       primary_key :id
       foreign_key :user_id, :users
@@ -10,9 +14,5 @@ Sequel.migration do
       DateTime :created_at, null: false
       DateTime :updated_at, null: false
     end
-  end
-
-  down do
-    drop_table(:paypal_subscriptions)
   end
 end
