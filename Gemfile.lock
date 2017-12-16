@@ -121,6 +121,13 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.0)
       tilt (~> 2.0)
+    sinatra-contrib (2.0.0)
+      backports (>= 2.0)
+      multi_json
+      mustermann (~> 1.0)
+      rack-protection (= 2.0.0)
+      sinatra (= 2.0.0)
+      tilt (>= 1.3, < 3)
     thread_safe (0.3.6)
     tilt (2.0.8)
     timecop (0.9.1)
@@ -151,6 +158,7 @@ DEPENDENCIES
   sequel
   simplecov
   sinatra
+  sinatra-contrib
   timecop
   webrat
   whenever

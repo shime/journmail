@@ -5,6 +5,7 @@ require "json"
 require "pry"
 require "email_reply_parser"
 require "logger"
+require "sinatra/content_for"
 
 require_relative "./../lib/services/email_response"
 require_relative "./../lib/services/register"
@@ -27,7 +28,7 @@ before {
 set :static_cache_control, [:public, max_age: 0]
 
 get "/" do
-  erb :index
+  erb :index, layout: false
 end
 
 post "/register" do
