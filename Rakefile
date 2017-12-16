@@ -66,7 +66,7 @@ end
 
 task :deploy do
   sh "rsync -av --delete --progress --exclude=logs --exclude=.git . root@journmail.com:/root/journmail"
-  sh %Q{ssh root@journmail.com -t 'bash -c "source /usr/local/share/chruby/chruby.sh; chruby 2.4.1;cd /root/journmail; RACK_ENV=production bundle exec rake db:migrate"'}
+  sh %Q{ssh root@journmail.com -t 'bash -c "source /usr/local/share/chruby/chruby.sh; chruby 2.4.1;cd /root/journmail; bundle install; RACK_ENV=production bundle exec rake db:migrate"'}
   sh "ssh root@journmail.com 'systemctl restart journmail.target'"
 end
 
