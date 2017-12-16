@@ -5,7 +5,6 @@ require "json"
 require "pry"
 require "email_reply_parser"
 require "logger"
-require "httparty"
 
 require_relative "./../lib/services/email_response"
 require_relative "./../lib/services/register"
