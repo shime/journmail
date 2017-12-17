@@ -75,7 +75,7 @@ task :ssh do
 end
 
 task :console do
-  sh "pry -r ./lib/models/user.rb -r ./lib/models/log_entry.rb"
+  exec "pry -r ./lib/models/user.rb -r ./lib/models/log_entry.rb"
 end
 
 task :default => [:features, :spec]
