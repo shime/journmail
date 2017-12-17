@@ -74,4 +74,8 @@ task :ssh do
   sh "ssh root@journmail.com"
 end
 
+task :console do
+  sh "pry -r ./lib/models/user.rb -r ./lib/models/log_entry.rb"
+end
+
 task :default => [:features, :spec]
