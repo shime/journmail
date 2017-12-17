@@ -19,6 +19,6 @@ class HighScoreCalculator
   end
 
   def gravatar_for(email)
-    Utils::Gravatar.url(email, {default: "https://journmail.com/images/user.png"})
+    Utils::Gravatar.url(email, {default: "https://journmail.com/images/user-circle.png"})
   end
 end
