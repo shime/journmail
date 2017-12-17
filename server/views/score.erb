@@ -1,0 +1,18 @@
+<div class='card score'>
+  <h3>HIGH SCORE</h3>
+  <ul style="list-style: none">
+    <% @score.each do |hash| %>
+      <li>
+        <span class="rank"><%= hash.keys[0][0].ordinalize %></span>
+        <span class="streak"><%= hash.keys[0][1] %><img src='/images/fire.svg' alt='Streak' /></span>
+        <% hash.values.flatten.uniq.each do |src| %>
+          <img class="gravatar" src="<%= src %>"/>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<% content_for :head do %>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+<% end %>

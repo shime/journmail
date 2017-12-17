@@ -6,11 +6,14 @@ require "pry"
 require "email_reply_parser"
 require "logger"
 require "sinatra/content_for"
-require 'raven'
+require "raven"
+require "active_support"
+require "active_support/core_ext"
 
 require_relative "./../lib/services/email_response"
 require_relative "./../lib/services/register"
 require_relative "./../lib/utils/gravatar"
+require_relative "./../lib/services/high_score_calculator"
 
 
 if ENV["RACK_ENV"] == "production"
@@ -113,6 +116,12 @@ get '/history/:token' do
   end
 
   erb :history
+end
+
+get '/highscore' do
+  @score = HighScoreCalculator.call
+
+  erb :score
 end
 
 post '/inbound' do

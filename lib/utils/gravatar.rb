@@ -18,7 +18,7 @@ module Utils
     def url(email, options = {})
       options = { size: 32 }.merge(options)
 
-      "https://www.gravatar.com/avatar/#{hash(email)}?s=#{options[:size]}"
+      "https://www.gravatar.com/avatar/#{hash(email)}?s=#{options[:size]}&default=#{options[:default]}"
     end
 
     private

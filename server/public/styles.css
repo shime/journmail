@@ -218,7 +218,7 @@ h1, h2, h3 {
   padding: 40px 0;
 }
 
-.streak {
+section.streak {
   background-color: #fff;
   height: 50px;
   padding: 10px;
@@ -226,16 +226,16 @@ h1, h2, h3 {
   box-shadow: 0 10px 30px #dee1e7;
 }
 
-.streak h3 {
+section.streak h3 {
   margin: 0;
   vertical-align: middle;
 }
 
-.streak img {
+section.streak img {
   height: 30px;
 }
 
-.streak span {
+section.streak span {
   position: relative;
   bottom: 5px;
   left: 5px;
@@ -566,6 +566,32 @@ pre {
   white-space: -pre-wrap;      /* Opera 4-6 */
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.score .rank {
+  float: left;
+  margin: 10px;
+}
+
+.score .streak {
+  float: right;
+  margin: 10px;
+}
+
+.score .streak img {
+  height: 16px;
+}
+
+.score li + li {
+  margin-top: 20px;
+}
+
+.score .gravatar {
+  height: 32px;
+}
+
+.score {
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Animation */
