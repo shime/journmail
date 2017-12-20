@@ -12,6 +12,7 @@ gem 'whenever', require: false
 gem 'activesupport'
 gem 'sinatra-contrib'
 gem 'sentry-raven'
+gem 'rack-attack'
 
 group :development do
   gem 'pry'

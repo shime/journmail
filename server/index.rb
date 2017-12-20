@@ -29,6 +29,7 @@ error_logger = ::File.new(::File.join(::File.dirname(::File.expand_path(__FILE__
 error_logger.sync = true
 
 configure do
+  use Rack::Attack
   use ::Rack::CommonLogger, access_logger
 
   if ENV["RACK_ENV"] == "production"
