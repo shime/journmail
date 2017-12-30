@@ -14,6 +14,7 @@ gem 'sinatra-contrib'
 gem 'sentry-raven'
 gem 'rack-attack'
 gem 'spreadsheet_architect'
+gem 'axlsx', git: "https://github.com/randym/axlsx.git"
 
 group :development do
   gem 'pry'
