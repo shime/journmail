@@ -119,6 +119,32 @@ get '/history/:token' do
   erb :history
 end
 
+get '/download/csv/:token' do
+  @current_user = User.find(token: params[:token])
+
+  if !@current_user
+    return erb(:not_found)
+  end
+
+  content_type 'application/csv'
+  attachment   'journmail.csv'
+
+  LogEntry.to_csv(instances: @current_user.log_entries)
+end
+
+get '/download/xlsx/:token' do
+  @current_user = User.find(token: params[:token])
+
+  if !@current_user
+    return erb(:not_found)
+  end
+
+  content_type 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+  attachment   'journmail.xlsx'
+
+  LogEntry.to_xlsx(instances: @current_user.log_entries)
+end
+
 get '/highscore' do
   @score = HighScoreCalculator.call
 

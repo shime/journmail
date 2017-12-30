@@ -12,6 +12,13 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    axlsx (2.0.1)
+      htmlentities (~> 4.3.1)
+      nokogiri (>= 1.4.1)
+      rubyzip (~> 1.0.0)
+    axlsx_styler (0.1.7)
+      activesupport (>= 3.1)
+      axlsx (~> 2.0)
     backports (3.10.3)
     builder (3.2.3)
     chronic (0.10.2)
@@ -71,6 +78,7 @@ GEM
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
     gherkin (4.1.3)
+    htmlentities (4.3.4)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
@@ -102,6 +110,10 @@ GEM
     rack-test (0.7.0)
       rack (>= 1.0, < 3)
     rake (12.2.1)
+    rodf (1.0.0)
+      activesupport (>= 3.0)
+      builder (>= 3.0)
+      rubyzip (>= 1.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -115,6 +127,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.0)
+    rubyzip (1.0.0)
     sentry-raven (2.7.1)
       faraday (>= 0.7.6, < 1.0)
     sequel (5.2.0)
@@ -135,6 +148,10 @@ GEM
       rack-protection (= 2.0.0)
       sinatra (= 2.0.0)
       tilt (>= 1.3, < 3)
+    spreadsheet_architect (2.0.2)
+      axlsx (>= 2.0)
+      axlsx_styler (>= 0.1.7)
+      rodf (>= 1.0.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
     timecop (0.9.1)
@@ -168,6 +185,7 @@ DEPENDENCIES
   simplecov
   sinatra
   sinatra-contrib
+  spreadsheet_architect
   timecop
   webrat
   whenever

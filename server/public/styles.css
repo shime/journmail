@@ -222,23 +222,47 @@ section.streak {
   background-color: #fff;
   height: 50px;
   padding: 10px;
-
   box-shadow: 0 10px 30px #dee1e7;
 }
 
 section.streak h3 {
   margin: 0;
   vertical-align: middle;
+  width: 90%;
+  display: inline-block;
+}
+
+section.streak img, section.streak svg {
+  height: 30px;
+  z-index: 1;
 }
 
 section.streak img {
-  height: 30px;
+  z-index: 0;
 }
 
 section.streak span {
   position: relative;
   bottom: 5px;
   left: 5px;
+}
+
+section.streak svg {
+  display: inline;
+  float: right;
+  cursor: pointer;
+  fill: #93c5fc;
+  z-index: 2;
+}
+
+section.streak svg:hover {
+  fill: #000;
+}
+
+section.streak .download-options {
+  float: right;
+  cursor: pointer;
+  display: none;
 }
 
 .features {

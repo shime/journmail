@@ -13,6 +13,7 @@ gem 'activesupport'
 gem 'sinatra-contrib'
 gem 'sentry-raven'
 gem 'rack-attack'
+gem 'spreadsheet_architect'
 
 group :development do
   gem 'pry'
