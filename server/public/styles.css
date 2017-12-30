@@ -612,10 +612,16 @@ pre {
 
 .score .gravatar {
   height: 32px;
+  border-radius: 100px;
 }
 
 .score {
   font-family: 'Press Start 2P', cursive;
+  margin-bottom: 50px;
+}
+
+.score small {
+  font-family: 'Lato', sans-serif;
 }
 
 /* Animation */

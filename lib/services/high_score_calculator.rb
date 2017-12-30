@@ -6,7 +6,7 @@ class HighScoreCalculator
   def initialize
     @streaks = User.all.map {|u| u.streak}.uniq.sort.reverse
     @score = User.all.map {|u| [u.streak, u.email]}.
-      sort.map {|u| {rank: @streaks.index(u[0]) + 1, email: u[1], streak: u[0]}}.reject {|o| o[:streak] == 0}.reverse
+      sort.map {|u| {rank: @streaks.index(u[0]) + 1, email: u[1], streak: u[0]}}.reject {|o| o[:streak] == 0 || o[:streak] == 1}.reverse
   end
 
   def call
@@ -15,7 +15,7 @@ class HighScoreCalculator
         hash = {}
         hash[o[0]] = o[1].reduce([]) {|sum, o| sum << gravatar_for(o[:email]) }
         hash
-    end.flatten(1).to_a
+    end.flatten(1).to_a.first(10)
   end
 
   def gravatar_for(email)
